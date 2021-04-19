@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+from PIL import Image
+
+for path_in in sys.argv[1:]:
+    path_out = os.path.splitext(path_in)[0] + '_bin.bmp'
+    print('{} => {}\n'.format(path_in, path_out))
+    with Image.open(path_in) as img:
+        img.convert("L").convert("1").save(path_out)
