@@ -18,6 +18,9 @@ typedef struct vswitch_ctx_t VSWITCH_CTX;
 
 typedef struct {
     BOOL (*update)(VSWITCH_CTX* ctx, uint32_t data, int now);
+    int32_t (*getmask)(VSWITCH_CTX* ctx);
+    int32_t (*getvalue)(VSWITCH_CTX* ctx);
+    void (*commit)(VSWITCH_CTX* ctx);
     void (*printlog)(VSWITCH_CTX* ctx);
 } VSWITCH_OPS;
 
@@ -46,6 +49,7 @@ Simple switch
 ========================================================*/
 typedef struct {
     VSWITCH_CTX common;
+    const char* name;
     const char* description;
     int mask;
     BOOL state;
@@ -58,6 +62,7 @@ typedef struct {
 const VSWITCH_OPS SimpleSwitchOps;
 
 #define DEF_SIMPLESW(N, D, M, R, C) static SimpleSwitchCtx N = {\
+    .name = #N,\
     .common = (VSWITCH_CTX){.ops = &SimpleSwitchOps},\
     .description = (D),\
     .mask = (M),\
@@ -79,16 +84,19 @@ typedef enum{
 
 typedef struct {
     VSWITCH_CTX common;
+    const char* name;
     const char* description;
     int amask;
     int bmask;
     RE_STATE state;
     int  counter;
+    int last;
 }RotaryEncoderCtx;
 
 const VSWITCH_OPS RotaryEncoderOps;
 
 #define DEF_ROTARYENC(N, D, A, B) static RotaryEncoderCtx N = {\
+    .name = #N,\
     .common = (VSWITCH_CTX){.ops = &RotaryEncoderOps},\
     .description = (D),\
     .amask = (A),\

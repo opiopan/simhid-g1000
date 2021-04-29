@@ -23,7 +23,8 @@ void vsbuf_push(VSWITCH_DIRTY_BUF *ctx, VSWITCH_CTX *data)
         return;
     }
     if (ctx->bottom - ctx->top > ctx->mask){
-        vsbuf_pop(ctx);
+        VSWITCH_CTX* sw = vsbuf_pop(ctx);
+        sw->ops->commit(sw);
     }
 
     data->isDirty = TRUE;
@@ -65,6 +66,22 @@ static BOOL ss_update(VSWITCH_CTX *ctx, uint32_t data, int now)
     return rc;
 }
 
+static int32_t ss_getmask(VSWITCH_CTX* ctx)
+{
+    SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
+    return rctx->mask;
+}
+
+static int32_t ss_getvalue(VSWITCH_CTX *ctx)
+{
+    SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
+    return rctx->state;
+}
+
+static void ss_commit(VSWITCH_CTX *ctx)
+{
+}
+
 static void ss_printlog(VSWITCH_CTX *ctx)
 {
     SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
@@ -75,6 +92,9 @@ static void ss_printlog(VSWITCH_CTX *ctx)
 
 const VSWITCH_OPS SimpleSwitchOps = {
     .update = ss_update,
+    .getmask = ss_getmask,
+    .getvalue = ss_getvalue,
+    .commit = ss_commit,
     .printlog = ss_printlog,
 };
 
@@ -151,6 +171,24 @@ static BOOL re_update(VSWITCH_CTX *ctx, uint32_t data, int now)
     return delta != 0;
 }
 
+static int32_t re_getmask(VSWITCH_CTX *ctx)
+{
+    RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
+    return rctx->amask | rctx->bmask;
+}
+
+static int32_t re_getvalue(VSWITCH_CTX *ctx)
+{
+    RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
+    return rctx->counter - rctx->last;
+}
+
+static void re_commit(VSWITCH_CTX *ctx)
+{
+    RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
+    rctx->last = rctx->counter;
+}
+
 static void re_printlog(VSWITCH_CTX *ctx)
 {
     RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
@@ -195,5 +233,8 @@ static void re_printlog(VSWITCH_CTX *ctx)
 
 const VSWITCH_OPS RotaryEncoderOps = {
     .update = re_update,
+    .getmask = re_getmask,
+    .getvalue = re_getvalue,
+    .commit = re_commit,
     .printlog = re_printlog,
 };

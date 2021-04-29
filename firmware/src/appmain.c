@@ -7,7 +7,7 @@
 #include "appmain.h"
 #include "olog.h"
 #include "hrtimer.h"
-#include "switch.h"
+#include "scanner.h"
 
 APPCONF* appconf;
 
@@ -23,9 +23,22 @@ void runApp(APPCONF *conf)
     olog_printf("=============================================\n");
 
     hrtimer_init(conf->hrtimer);
+    int now = HRTIMER_GETTIME();
+    SCANNER_CTX scanner;
+    scanner_init(&scanner, appconf->spi, now);
 
     // main loop
-    while(1){
-        int now = HRTIMER_GETTIME();
+    int lastprint = now;
+    while (1)
+    {
+        now = HRTIMER_GETTIME();
+        scanner_schedule(&scanner, now);
+        if (now - lastprint >= 50 * 1000){
+            lastprint = now;
+            VSWITCH_CTX *ctx;
+            while ((ctx = scanner_getUpdatedSwitch(&scanner)) != NULL){
+                ctx->ops->printlog(ctx);
+            }
+        }
     }
 }

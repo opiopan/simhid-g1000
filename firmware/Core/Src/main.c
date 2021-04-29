@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "appmain.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,17 +96,18 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-
+  APPCONF conf = {
+    .hrtimer = &htim2,
+    .spi = &hspi1,
+  };
+  runApp(&conf);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
   /* USER CODE END 3 */
 }
 
@@ -251,10 +252,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(EXT4CS_GPIO_Port, EXT4CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(EXT4CS_GPIO_Port, EXT4CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, EXT3CS_Pin|EXT2CS_Pin|EXT1CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, EXT3CS_Pin|EXT2CS_Pin|EXT1CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pins : EC6YA_Pin EC6XB_Pin EC6XA_Pin */
   GPIO_InitStruct.Pin = EC6YA_Pin|EC6XB_Pin|EC6XA_Pin;
