@@ -109,17 +109,21 @@ static VSWITCH_CTX *RSW_SWS[] = {
 
 static uint32_t SWG_RSW_Filter(VSWG_CTX* ctx, uint32_t data)
 {
+    // Note: 
+    //  All switch except aux2 are pulled up to VDD.
+    //  That means filter funtion must handle data as negative logic.
     uint32_t EC8_DIRS = 1 << 3 | 1 << 5 | 1 << 6 | 1 << 7;
     uint32_t EC8_PUSH = 1 << 4;
+    #define DIRON(bits) (EC8_DIRS & ~(1<<(bits)))
 
     uint32_t dirs = data & EC8_DIRS;
-    uint32_t mask = ~(EC8_DIRS | EC8_PUSH);
+    uint32_t mask = EC8_DIRS | EC8_PUSH;
 
-    if (dirs == EC8_DIRS){
-        mask = ~EC8_DIRS;
-    }else if (dirs == 1 << 3 || dirs == 1 << 5 || 
-              dirs == 1 << 6 || dirs == 1 << 7){
-        mask = ~EC8_PUSH;
+    if (dirs == 0){
+        mask = EC8_DIRS;
+    }else if (dirs == DIRON(3) || dirs == DIRON(5) || 
+              dirs == DIRON(6) || dirs == DIRON(7)){
+        mask = EC8_PUSH;
     }
 
     return data & mask;
