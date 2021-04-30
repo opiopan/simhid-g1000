@@ -126,7 +126,7 @@ static uint32_t SWG_RSW_Filter(VSWG_CTX* ctx, uint32_t data)
         mask = EC8_PUSH;
     }
 
-    return data & mask;
+    return data | mask;
 }
 
 static EXTSWG_CTX SWG_RSW = 
