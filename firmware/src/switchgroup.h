@@ -30,6 +30,7 @@ typedef struct vswgroup_ctx_t{
     int swnum;
     VSWITCH_CTX** sws;
     uint32_t (*filter)(VSWG_CTX* ctx, uint32_t data);
+    int lastdata;
     int scantime;
 }VSWG_CTX;
 

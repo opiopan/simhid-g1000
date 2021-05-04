@@ -3,13 +3,18 @@
  *  Author: Hiroshi Murayama <opiopan@gmail.com>
  */
 
+#include <string.h>
+#include "usbd_cdc_if.h"
 #include "project.h"
 #include "appmain.h"
 #include "olog.h"
 #include "hrtimer.h"
 #include "scanner.h"
+#include "hostprotocol.h"
 
 APPCONF* appconf;
+
+volatile int appmaintest;
 
 /*===============================================================
  * main logic
@@ -26,19 +31,30 @@ void runApp(APPCONF *conf)
     int now = HRTIMER_GETTIME();
     SCANNER_CTX scanner;
     scanner_init(&scanner, appconf->spi, now);
+    HostProtocolCtx protocol;
+    hostprotocol_init(&protocol, &scanner);
+
+    BOOL inLogmode = scanner.bootmode & BOOTMODE_LOG;
+    OLOG_LOGI("appmain: Log mode [%s]", inLogmode ? "ON" : "OFF");
 
     // main loop
     int lastprint = now;
+    VSWITCH_CTX* updated_sw = NULL;
     while (1)
     {
         now = HRTIMER_GETTIME();
         scanner_schedule(&scanner, now);
-        if (now - lastprint >= 50 * 1000){
+        VSWITCH_CTX* sw = hostprotocol_schedule(&protocol, now);
+        updated_sw = sw ? sw : updated_sw;
+        if (inLogmode && now - lastprint >= 50 * 1000 && sw){
             lastprint = now;
-            VSWITCH_CTX *ctx;
-            while ((ctx = scanner_getUpdatedSwitch(&scanner)) != NULL){
-                ctx->ops->printlog(ctx);
-            }
+            static char buf[60];
+            int len = sw->ops->printlog(sw, buf, sizeof(buf) - 1);
+            memset(buf + len, ' ', sizeof(buf) - 1 - len);
+            buf[sizeof(buf) - 2] = '\r';
+            buf[sizeof(buf) - 1] = '\0';
+            olog_printf("    %s", buf);
+            sw = NULL;
         }
     }
 }

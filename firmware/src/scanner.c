@@ -4,6 +4,7 @@
  */
 
 #include "project.h"
+#include "olog.h"
 #include "switch.h"
 #include "switchgroup.h"
 #include "scanner.h"
@@ -71,9 +72,9 @@ static DIRECTSWG_CTX SWG_RRE = DEFDIRECTSWG(
 /*========================================================
  Switch Group Definition: Right Switch Cluster (Expander 4)
 ========================================================*/
-DEF_SIMPLESW(SW30, "SW30", 1 << 0, TRUE, LPF);
-DEF_SIMPLESW(SW32, "SW32", 1 << 1, TRUE, LPF);
-DEF_SIMPLESW(SW34, "SW34", 1 << 2, TRUE, LPF);
+DEF_SIMPLESW(SW28, "SW28", 1 << 0, TRUE, LPF);
+DEF_SIMPLESW(SW30, "SW30", 1 << 1, TRUE, LPF);
+DEF_SIMPLESW(SW32, "SW32", 1 << 2, TRUE, LPF);
 DEF_SIMPLESW(EC8L, "EC8-Left", 1 << 3, TRUE, LPF);
 DEF_SIMPLESW(EC8P, "EC8-Push", 1 << 4, TRUE, LPF);
 DEF_SIMPLESW(EC8U, "EC8-Up", 1 << 5, TRUE, LPF);
@@ -81,11 +82,11 @@ DEF_SIMPLESW(EC8D, "EC8-Down", 1 << 6, TRUE, LPF);
 DEF_SIMPLESW(EC8R, "EC8-Right", 1 << 7, TRUE, LPF);
 DEF_SIMPLESW(EC7P, "EC7-Push", 1 << 8, TRUE, LPF);
 DEF_SIMPLESW(EC6P, "EC6-Push", 1 << 9, TRUE, LPF);
-DEF_SIMPLESW(SW28, "SW28", 1 << 10, TRUE, LPF);
+DEF_SIMPLESW(SW26, "SW26", 1 << 10, TRUE, LPF);
 DEF_SIMPLESW(EC5P, "EC5-Push", 1 << 11, TRUE, LPF);
-DEF_SIMPLESW(SW29, "SW29", 1 << 12, TRUE, LPF);
-DEF_SIMPLESW(SW31, "SW31", 1 << 13, TRUE, LPF);
-DEF_SIMPLESW(SW33, "SW33", 1 << 14, TRUE, LPF);
+DEF_SIMPLESW(SW27, "SW27", 1 << 12, TRUE, LPF);
+DEF_SIMPLESW(SW29, "SW29", 1 << 13, TRUE, LPF);
+DEF_SIMPLESW(SW31, "SW31", 1 << 14, TRUE, LPF);
 DEF_SIMPLESW(EC9P, "EC9-Push", 1 << 15, TRUE, LPF);
 
 static VSWITCH_CTX *RSW_SWS[] = {
@@ -98,13 +99,13 @@ static VSWITCH_CTX *RSW_SWS[] = {
     (VSWITCH_CTX *)&EC8R,
     (VSWITCH_CTX *)&EC8L,
     (VSWITCH_CTX *)&EC9P,
+    (VSWITCH_CTX *)&SW26,
+    (VSWITCH_CTX *)&SW27,
     (VSWITCH_CTX *)&SW28,
     (VSWITCH_CTX *)&SW29,
     (VSWITCH_CTX *)&SW30,
     (VSWITCH_CTX *)&SW31,
     (VSWITCH_CTX *)&SW32,
-    (VSWITCH_CTX *)&SW33,
-    (VSWITCH_CTX *)&SW34,
 };
 
 static uint32_t SWG_RSW_Filter(VSWG_CTX* ctx, uint32_t data)
@@ -117,12 +118,9 @@ static uint32_t SWG_RSW_Filter(VSWG_CTX* ctx, uint32_t data)
     #define DIRON(bits) (EC8_DIRS & ~(1<<(bits)))
 
     uint32_t dirs = data & EC8_DIRS;
-    uint32_t mask = EC8_DIRS | EC8_PUSH;
+    uint32_t mask = 0;
 
-    if (dirs == 0){
-        mask = EC8_DIRS;
-    }else if (dirs == DIRON(3) || dirs == DIRON(5) || 
-              dirs == DIRON(6) || dirs == DIRON(7)){
+    if (dirs != EC8_DIRS){
         mask = EC8_PUSH;
     }
 
@@ -136,24 +134,25 @@ static EXTSWG_CTX SWG_RSW =
 /*========================================================
  Switch Group Definition: Bottom Switch Cluster (Expander 3)
 ========================================================*/
-DEF_SIMPLESW(SW21, "SW21", 1 << 0, TRUE, LPF);
-DEF_SIMPLESW(SW19, "SW19", 1 << 1, TRUE, LPF);
-DEF_SIMPLESW(SW20, "SW20", 1 << 2, TRUE, LPF);
-DEF_SIMPLESW(SW18, "SW18", 1 << 3, TRUE, LPF);
-DEF_SIMPLESW(SW17, "SW17", 1 << 4, TRUE, LPF);
-DEF_SIMPLESW(SW16, "SW16", 1 << 5, TRUE, LPF);
-DEF_SIMPLESW(SW15, "SW15", 1 << 6, TRUE, LPF);
+DEF_SIMPLESW(SW20, "SW20", 1 << 0, TRUE, LPF);
+DEF_SIMPLESW(SW18, "SW18", 1 << 1, TRUE, LPF);
+DEF_SIMPLESW(SW19, "SW19", 1 << 2, TRUE, LPF);
+DEF_SIMPLESW(SW17, "SW17", 1 << 3, TRUE, LPF);
+DEF_SIMPLESW(SW16, "SW16", 1 << 4, TRUE, LPF);
+DEF_SIMPLESW(SW15, "SW15", 1 << 5, TRUE, LPF);
+DEF_SIMPLESW(SW14, "SW14", 1 << 6, TRUE, LPF);
 /* skip */
 /* skip */
 /* skip */
-DEF_SIMPLESW(SW26, "SW26", 1 << 10, TRUE, LPF);
-DEF_SIMPLESW(SW25, "SW25", 1 << 11, TRUE, LPF);
-DEF_SIMPLESW(SW24, "SW24", 1 << 12, TRUE, LPF);
-DEF_SIMPLESW(SW23, "SW23", 1 << 13, TRUE, LPF);
-DEF_SIMPLESW(SW22, "SW22", 1 << 14, TRUE, LPF);
+DEF_SIMPLESW(SW25, "SW25", 1 << 10, TRUE, LPF);
+DEF_SIMPLESW(SW24, "SW24", 1 << 11, TRUE, LPF);
+DEF_SIMPLESW(SW23, "SW23", 1 << 12, TRUE, LPF);
+DEF_SIMPLESW(SW22, "SW22", 1 << 13, TRUE, LPF);
+DEF_SIMPLESW(SW21, "SW21", 1 << 14, TRUE, LPF);
 /* skip */
 
 static VSWITCH_CTX *BSW_SWS[] = {
+    (VSWITCH_CTX *)&SW14,
     (VSWITCH_CTX *)&SW15,
     (VSWITCH_CTX *)&SW16,
     (VSWITCH_CTX *)&SW17,
@@ -165,7 +164,6 @@ static VSWITCH_CTX *BSW_SWS[] = {
     (VSWITCH_CTX *)&SW23,
     (VSWITCH_CTX *)&SW24,
     (VSWITCH_CTX *)&SW25,
-    (VSWITCH_CTX *)&SW26,
 };
 
 static EXTSWG_CTX SWG_BSW =
@@ -265,10 +263,22 @@ static VSWG_CTX* LP_SWGS[] = {
 #define LP_SWGS_PERIOD  (LP_PERIOD / LP_SWGS_NUM)
 
 /*========================================================
+ All Switch Group list
+========================================================*/
+static VSWG_CTX* AllSWGS[] = {
+    (VSWG_CTX*)&SWG_LRE,
+    (VSWG_CTX*)&SWG_LSW,
+    (VSWG_CTX*)&SWG_BSW,
+    (VSWG_CTX*)&SWG_RRE,
+    (VSWG_CTX*)&SWG_RSW,
+};
+
+/*========================================================
  Switces to enter log mode
 ========================================================*/
-static VSWITCH_CTX* logmode_sws[] = {
-    (VSWITCH_CTX*)&AUX1P,
+static VSWITCH_CTX *logmode_sws[] = {
+    (VSWITCH_CTX *)&SW2,
+    (VSWITCH_CTX *)&SW14,
 };
 
 /*========================================================
@@ -300,7 +310,7 @@ BOOL scanner_init(SCANNER_CTX *ctx, SPI_HandleTypeDef *spi, int now)
     BOOL logmode = TRUE;
     for (int i = 0; i < sizeof(logmode_sws) / sizeof(logmode_sws[0]); i++){
         VSWITCH_CTX* sw = logmode_sws[i];
-        logmode = logmode && sw->ops->getvalue(sw);
+        logmode = logmode && sw->ops->getrawvalue(sw);
     }
     if (logmode){
         ctx->bootmode = BOOTMODE_LOG;
@@ -324,4 +334,14 @@ BOOL scanner_schedule(SCANNER_CTX *ctx, int now)
         }
     }
     return TRUE;
+}
+
+int scanner_getswgnum(SCANNER_CTX *ctx)
+{
+    return sizeof(AllSWGS) / sizeof(AllSWGS[0]);
+}
+
+VSWG_CTX *scanner_getswg(SCANNER_CTX *ctx, int index)
+{
+    return AllSWGS[index];
 }

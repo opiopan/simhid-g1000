@@ -56,6 +56,7 @@ static BOOL extswg_scan(VSWG_CTX *ctx, VSWITCH_DIRTY_BUF *dbuf, int now)
         }
     }
 
+    rctx->common.lastdata = state;
     rctx->common.scantime = now;
     return TRUE;
 }
@@ -93,6 +94,7 @@ static BOOL directswg_scan(VSWG_CTX *ctx, VSWITCH_DIRTY_BUF *dbuf, int now)
         }
     }
 
+    rctx->common.lastdata = state;
     rctx->common.scantime = now;
     return TRUE;
 }

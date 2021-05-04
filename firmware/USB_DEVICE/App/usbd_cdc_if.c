@@ -23,7 +23,7 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include "hostprotocol.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -312,9 +312,7 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 {
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 13 */
-  UNUSED(Buf);
-  UNUSED(Len);
-  UNUSED(epnum);
+  hostprotocol_inform_sending_completion();
   /* USER CODE END 13 */
   return result;
 }

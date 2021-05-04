@@ -3,6 +3,8 @@
  *  Author: Hiroshi Murayama <opiopan@gmail.com>
  */
 
+#include <stdio.h>
+#include <string.h>
 #include "switch.h"
 #include "olog.h"
 
@@ -77,16 +79,32 @@ static int32_t ss_getvalue(VSWITCH_CTX *ctx)
     SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
     return rctx->state;
 }
+static int32_t ss_getrawvalue(VSWITCH_CTX *ctx)
+{
+    SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
+    return rctx->indoubt ? !rctx->state : rctx->state;
+}
 
 static void ss_commit(VSWITCH_CTX *ctx)
 {
 }
 
-static void ss_printlog(VSWITCH_CTX *ctx)
+static int ss_printstate(VSWITCH_CTX *ctx, char *buf, int len)
 {
     SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
-    olog_printf(
-        "%.8s: %.8s                                   \r", 
+    int rc = strlcpy(buf, rctx->common.name, len);
+    buf[rc++] = ' ';
+    buf[rc++] = rctx->state ? '1' : '0';
+    buf[rc] = '\0';
+    return rc;
+}
+
+static int ss_printlog(VSWITCH_CTX *ctx, char* buf, int len)
+{
+    SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
+    return snprintf(
+        buf, len,
+        "%s: %s", 
         rctx->description, rctx->state ? "ON" : "OFF");
 }
 
@@ -94,7 +112,9 @@ const VSWITCH_OPS SimpleSwitchOps = {
     .update = ss_update,
     .getmask = ss_getmask,
     .getvalue = ss_getvalue,
+    .getrawvalue = ss_getrawvalue,
     .commit = ss_commit,
+    .printstate = ss_printstate,
     .printlog = ss_printlog,
 };
 
@@ -183,13 +203,27 @@ static int32_t re_getvalue(VSWITCH_CTX *ctx)
     return rctx->counter - rctx->last;
 }
 
+static int32_t re_getrawvalue(VSWITCH_CTX *ctx)
+{
+    RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
+    return rctx->counter;
+}
+
 static void re_commit(VSWITCH_CTX *ctx)
 {
     RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
     rctx->last = rctx->counter;
 }
 
-static void re_printlog(VSWITCH_CTX *ctx)
+static int re_printstate(VSWITCH_CTX *ctx, char* buf, int len)
+{
+    RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
+    return snprintf(buf, len, "%s %ld", 
+                    rctx->common.name, 
+                    (int32_t)(int8_t)((rctx->counter - rctx->last) & 0xff));
+}
+
+static int re_printlog(VSWITCH_CTX *ctx, char* buf, int len)
 {
     RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
     static const char *pat[] = {
@@ -226,8 +260,9 @@ static void re_printlog(VSWITCH_CTX *ctx)
         "|oooo                          oo|",
         "|ooooo                          o|",
     };
-    olog_printf(
-        "%.8s: %8d %s\r", 
+    return snprintf(
+        buf, len,
+        "%s: %6d %s", 
         rctx->description, rctx->counter, pat[rctx->counter & 0x1f]);
 }
 
@@ -235,6 +270,8 @@ const VSWITCH_OPS RotaryEncoderOps = {
     .update = re_update,
     .getmask = re_getmask,
     .getvalue = re_getvalue,
+    .getrawvalue = re_getrawvalue,
     .commit = re_commit,
+    .printstate = re_printstate,
     .printlog = re_printlog,
 };
