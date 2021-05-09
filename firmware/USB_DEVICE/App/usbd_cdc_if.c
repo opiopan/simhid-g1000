@@ -267,6 +267,8 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 6 */
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
+  hostprotocol_recvbuf_sync_it();
+  hostprotocol_recvbuf_add_it((char*)Buf, *Len);
   return (USBD_OK);
   /* USER CODE END 6 */
 }
@@ -318,15 +320,19 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 }
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
+int CDC_IsTxBusy()
+{
+  USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef *)hUsbDeviceFS.pClassData;
+  return hcdc->TxState != 0;
+}
+  /* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
 
-/* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
-
-/**
+  /**
   * @}
   */
 
-/**
+  /**
   * @}
   */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+  /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
