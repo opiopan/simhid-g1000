@@ -8,6 +8,8 @@
 
 #include "main.h"
 #include "project.h"
+#include "scanner.h"
+#include "hostprotocol.h"
 
 typedef struct {
     TIM_HandleTypeDef* hrtimer;
@@ -15,5 +17,8 @@ typedef struct {
 } APPCONF;
 
 void runApp(APPCONF* conf);
+
+SCANNER_CTX *app_getScannerCtx();
+HostProtocolCtx *app_getProtocolCtx();
 
 #endif

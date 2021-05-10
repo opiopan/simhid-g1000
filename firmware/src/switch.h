@@ -23,6 +23,7 @@ typedef struct {
     int32_t (*getrawvalue)(VSWITCH_CTX *ctx);
     void (*commit)(VSWITCH_CTX *ctx);
     int (*printstate)(VSWITCH_CTX *ctx, char *buf, int len);
+    int (*printdef)(VSWITCH_CTX *ctx, char *buf, int len);
     int (*printlog)(VSWITCH_CTX *ctx, char *buf, int len);
 } VSWITCH_OPS;
 

@@ -34,6 +34,9 @@ typedef struct vswgroup_ctx_t{
     int scantime;
 }VSWG_CTX;
 
+#define SWG_GET_SWITCHNUM(swg) (swg)->swnum
+#define SWG_GET_SWITCH(swg, ix) (swg)->sws[ix]
+
 /*========================================================
  Switch group accessing via MCP23S18
 ========================================================*/

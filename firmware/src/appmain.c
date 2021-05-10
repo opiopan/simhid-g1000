@@ -16,8 +16,21 @@ APPCONF* appconf;
 
 volatile int appmaintest;
 
+/*===============================================================
+ * utility functions
+ *==============================================================*/
 static SCANNER_CTX scanner;
 static HostProtocolCtx protocol;
+
+SCANNER_CTX* app_getScannerCtx()
+{
+    return &scanner;
+}
+
+HostProtocolCtx* app_getProtocolCtx()
+{
+    return &protocol;
+}
 
 /*===============================================================
  * main logic

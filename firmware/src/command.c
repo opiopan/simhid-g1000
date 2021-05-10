@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "project.h"
+#include "appmain.h"
 #include "command.h"
 
 static const char* PRODUCTNAME = "SimHID G1000";
@@ -270,6 +271,62 @@ static CMDOPS cmd_id = {
     .isfinished = id_isfinished,
 };
 
+/*--------------------------------------------------------
+ Retrieving switch definitions command
+--------------------------------------------------------*/
+typedef struct {
+    int swgix;
+    int swix;
+    BOOL completed;
+}SWDEFCTX;
+
+static void swdef_init(void *ctx, CommandParserCtx *cmd)
+{
+    SWDEFCTX* rctx = (SWDEFCTX*)ctx;
+    *rctx = (SWDEFCTX){};
+}
+
+static int swdef_schedule(void *ctx, char *respbuf, int len)
+{
+    SWDEFCTX* rctx = (SWDEFCTX*)ctx;
+    if (rctx->swgix < 0){
+        rctx->completed = TRUE;
+        return strlcpy(respbuf, "D\r\n", len);
+    }
+
+    SCANNER_CTX *scanner = app_getScannerCtx();
+    VSWG_CTX* swg = scanner_getswg(scanner, rctx->swgix);
+    VSWITCH_CTX* sw = SWG_GET_SWITCH(swg, rctx->swix);
+
+    int rc = snprintf(respbuf, len, "D %s ", sw->name);
+    rc += sw->ops->printdef(sw, respbuf + rc, len - rc);
+    rc += strlcpy(respbuf + rc, "\r\n", len - rc);
+
+    rctx->swix++;
+    if (rctx->swix >= SWG_GET_SWITCHNUM(swg)){
+        rctx->swgix++;
+        rctx->swix = 0;
+        if (rctx->swgix > scanner_getswgnum(scanner)){
+            rctx->swgix = -1;
+            rctx->swix = -1;
+        }
+    }
+
+    return rc;
+}
+
+static BOOL swdef_isfinished(void *ctx)
+{
+    SWDEFCTX *rctx = (SWDEFCTX *)ctx;
+    return rctx->completed;
+}
+
+static CMDOPS cmd_swdef = {
+    .init = swdef_init,
+    .schedule = swdef_schedule,
+    .isfinished = swdef_isfinished,
+};
+
 /*========================================================
  Command executor implementation
 ========================================================*/
@@ -283,6 +340,8 @@ void command_executor_init(CommandExecutorCtx *ctx, CommandParserCtx *command)
         ctx->ops = &cmd_nop;
     }else if (cmdchr == 'i' || cmdchr == 'I'){
         ctx->ops = &cmd_id;
+    }else if (cmdchr == 'd' || cmdchr == 'D'){
+        ctx->ops = &cmd_swdef;
     }else{
         command->err = ERR_NOCMD;
         ctx->ops = &cmd_err;

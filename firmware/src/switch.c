@@ -99,7 +99,12 @@ static int ss_printstate(VSWITCH_CTX *ctx, char *buf, int len)
     return rc;
 }
 
-static int ss_printlog(VSWITCH_CTX *ctx, char* buf, int len)
+static int ss_printdef(VSWITCH_CTX *ctx, char *buf, int len)
+{
+    return strlcpy(buf, "ABS 0 1", len);
+}
+
+    static int ss_printlog(VSWITCH_CTX *ctx, char *buf, int len)
 {
     SimpleSwitchCtx *rctx = (SimpleSwitchCtx *)ctx;
     return snprintf(
@@ -115,6 +120,7 @@ const VSWITCH_OPS SimpleSwitchOps = {
     .getrawvalue = ss_getrawvalue,
     .commit = ss_commit,
     .printstate = ss_printstate,
+    .printdef = ss_printdef,
     .printlog = ss_printlog,
 };
 
@@ -223,6 +229,11 @@ static int re_printstate(VSWITCH_CTX *ctx, char* buf, int len)
                     (int32_t)(int8_t)((rctx->counter - rctx->last) & 0xff));
 }
 
+static int re_printdef(VSWITCH_CTX *ctx, char *buf, int len)
+{
+    return strlcpy(buf, "REL -128 127", len);
+}
+
 static int re_printlog(VSWITCH_CTX *ctx, char* buf, int len)
 {
     RotaryEncoderCtx *rctx = (RotaryEncoderCtx *)ctx;
@@ -273,5 +284,6 @@ const VSWITCH_OPS RotaryEncoderOps = {
     .getrawvalue = re_getrawvalue,
     .commit = re_commit,
     .printstate = re_printstate,
+    .printdef = re_printdef,
     .printlog = re_printlog,
 };
