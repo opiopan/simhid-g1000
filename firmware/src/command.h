@@ -5,6 +5,7 @@
 
 #pragma once
 #include "project.h"
+#include "scanner.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -18,6 +19,7 @@ extern "C"
 
 typedef enum{
         PARSE_INIT = 0,
+        PARSE_POSTCOMMAND,
         PARSE_SEPARATOR,
         PARSE_MINUSNUMBER,
         PARSE_NUMBER,

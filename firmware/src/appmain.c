@@ -16,6 +16,9 @@ APPCONF* appconf;
 
 volatile int appmaintest;
 
+static SCANNER_CTX scanner;
+static HostProtocolCtx protocol;
+
 /*===============================================================
  * main logic
  *==============================================================*/
@@ -23,15 +26,14 @@ void runApp(APPCONF *conf)
 {
     appconf = conf;
     olog_init();
-    olog_printf("\n\n=============================================\n");
+    olog_printf("\n\n");
+    olog_printf("=============================================\n");
     olog_printf("  SimHID G1000\n");
     olog_printf("=============================================\n");
 
     hrtimer_init(conf->hrtimer);
     int now = HRTIMER_GETTIME();
-    SCANNER_CTX scanner;
     scanner_init(&scanner, appconf->spi, now);
-    HostProtocolCtx protocol;
     hostprotocol_init(&protocol, &scanner);
 
     BOOL inLogmode = scanner.bootmode & BOOTMODE_LOG;

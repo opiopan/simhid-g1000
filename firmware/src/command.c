@@ -72,8 +72,19 @@ BOOL command_parser_parse(CommandParserCtx *ctx, int c)
         if (isSeparator(c)){
             /* nothing to do */
         }else if (isCommand(c)){
-            ctx->phase = PARSE_SEPARATOR;
+            ctx->phase = PARSE_POSTCOMMAND;
             ctx->command = c;
+        }else if (c == '\r'){
+            ctx->phase = PARSE_EOL;
+        }else{
+            ctx->phase = PARSE_SKIP;
+            ctx->err = ERR_SYNTAX;
+        }
+        break;
+    }
+    case PARSE_POSTCOMMAND:{
+        if (isSeparator(c)){
+            ctx->phase = PARSE_SEPARATOR;
         }else if (c == '\r'){
             ctx->phase = PARSE_EOL;
         }else{
@@ -100,6 +111,8 @@ BOOL command_parser_parse(CommandParserCtx *ctx, int c)
             }else if (isNumeric(c)){
                 ctx->phase = PARSE_NUMBER;
                 param->numvalue = c - '0';
+            }else{
+                ctx->phase = PARSE_STRING;
             }
         }
         break;
