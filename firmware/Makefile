@@ -52,6 +52,7 @@ src/mcp23s18.c \
 src/scanner.c \
 src/hostprotocol.c \
 src/command.c \
+src/option.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \

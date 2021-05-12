@@ -9,6 +9,7 @@
 #include "switch.h"
 #include "scanner.h"
 #include "command.h"
+#include "option.h"
 #include "hostprotocol.h"
 
 #define LINEBUFLEN 128
@@ -219,14 +220,25 @@ VSWITCH_CTX *hostprotocol_schedule(HostProtocolCtx *ctx, int now)
      */
     VSWITCH_CTX *sw = NULL;
     if (ctx->cmdstatus != EXECUTING){
-        static char evresp[2 + SWITCHSTATE_MAXLEN + 2] = "S ";
+        static char evresp[60] = "S ";
+        BOOL inDebugMode = option_getValue(OPT_DEBUG).data.boolval;
+        int maxlen = inDebugMode ? sizeof(evresp) : 2 + SWITCHSTATE_MAXLEN + 2;
         while (scanner_updatedSwitchNum(ctx->scanner) &&
-               sendbuf_freelen() >= sizeof(evresp)){
+               sendbuf_freelen() >= maxlen){
             sw = scanner_getUpdatedSwitch(ctx->scanner);
             int len = 2;
-            len += sw->ops->printstate(sw, evresp + len, sizeof(evresp) - len - 2);
-            evresp[len++] = '\r';
-            evresp[len++] = '\n';
+            if (inDebugMode){
+                evresp[0] = '#';
+                len += sw->ops->printlog(sw, evresp + len, maxlen - len);
+                memset(evresp + len, ' ', maxlen - len);
+                evresp[maxlen - 1] = '\r';
+                len = maxlen;
+            }else{
+                evresp[0] = 'S';
+                len += sw->ops->printstate(sw, evresp + len, maxlen - len - 2);
+                evresp[len++] = '\r';
+                evresp[len++] = '\n';
+            }
             sendbuf_add(evresp, len);
             sw->ops->commit(sw);
             ctx->send_time = now;

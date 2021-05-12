@@ -11,6 +11,7 @@
 #include "hrtimer.h"
 #include "scanner.h"
 #include "hostprotocol.h"
+#include "option.h"
 
 APPCONF* appconf;
 
@@ -44,12 +45,14 @@ void runApp(APPCONF *conf)
     olog_printf("  SimHID G1000\n");
     olog_printf("=============================================\n");
 
+    HAL_Delay(500);
+
     hrtimer_init(conf->hrtimer);
     int now = HRTIMER_GETTIME();
     scanner_init(&scanner, appconf->spi, now);
     hostprotocol_init(&protocol, &scanner);
 
-    BOOL inLogmode = scanner.bootmode & BOOTMODE_LOG;
+    BOOL inLogmode = option_getValue(OPT_EVLOG).data.boolval;
     OLOG_LOGI("appmain: Log mode [%s]", inLogmode ? "ON" : "OFF");
 
     // main loop
@@ -61,15 +64,18 @@ void runApp(APPCONF *conf)
         scanner_schedule(&scanner, now);
         VSWITCH_CTX* sw = hostprotocol_schedule(&protocol, now);
         updated_sw = sw ? sw : updated_sw;
-        if (inLogmode && now - lastprint >= 50 * 1000 && sw){
+        if (now - lastprint >= 50 * 1000 && sw){
             lastprint = now;
-            static char buf[60];
-            int len = sw->ops->printlog(sw, buf, sizeof(buf) - 1);
-            memset(buf + len, ' ', sizeof(buf) - 1 - len);
-            buf[sizeof(buf) - 2] = '\r';
-            buf[sizeof(buf) - 1] = '\0';
-            olog_printf("    %s", buf);
-            sw = NULL;
+            inLogmode = option_getValue(OPT_EVLOG).data.boolval;
+            if (inLogmode){
+                static char buf[60];
+                int len = sw->ops->printlog(sw, buf, sizeof(buf) - 1);
+                memset(buf + len, ' ', sizeof(buf) - 1 - len);
+                buf[sizeof(buf) - 2] = '\r';
+                buf[sizeof(buf) - 1] = '\0';
+                olog_printf("    %s", buf);
+                sw = NULL;
+            }
         }
     }
 }
