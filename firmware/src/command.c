@@ -9,14 +9,17 @@
 #include "project.h"
 #include "appmain.h"
 #include "option.h"
+#include "version.h"
 #include "command.h"
 
 static const char* PRODUCTNAME = "SimHID G1000";
+static const char* MANUFACTURER = "Hiroshi Murayama <opiopan@gmail.com>";
+static const char* PROTOCOL = "SimHID protocol V1";
 
-/*========================================================
+    /*========================================================
  Error message
 ========================================================*/
-static const char* ERR_SYNTAX = "syntax error";
+    static const char *ERR_SYNTAX = "syntax error";
 static const char* ERR_TOOLONG = "too long line";
 static const char* ERR_TOOMANYPARAM = "parameters of command must be less than 10";
 static const char* ERR_NOCMD = "not supported command";
@@ -262,18 +265,37 @@ static CMDOPS cmd_err = {
 /*--------------------------------------------------------
  Identifier command
 --------------------------------------------------------*/
+typedef struct{
+    int line;    
+}IDCTX;
+
 static void id_init(void *ctx, CommandParserCtx *cmd)
 {
+    IDCTX* rctx = (IDCTX*)ctx;
+    rctx->line = 0;
 }
 
 static int id_schedule(void *ctx, char *respbuf, int len)
 {
-    return snprintf(respbuf, len, "I %s\r\n", PRODUCTNAME);
+    IDCTX *rctx = (IDCTX *)ctx;
+    rctx->line++;
+    if (rctx->line == 1){
+        return snprintf(respbuf, len, "I Product Name: %s\r\n", PRODUCTNAME);
+    }else if (rctx->line == 2){
+        return snprintf(respbuf, len, "I Manufacturer: %s\r\n", MANUFACTURER);
+    }else if (rctx->line == 3){
+        return snprintf(respbuf, len, "I Firmware Version: %s\r\n", version_string);
+    }else if (rctx->line == 4){
+        return snprintf(respbuf, len, "I Protocol: %s\r\n", PROTOCOL);
+    }
+
+    return 0;
 }
 
 static BOOL id_isfinished(void *ctx)
 {
-    return TRUE;
+    IDCTX *rctx = (IDCTX *)ctx;
+    return rctx->line >= 4;
 }
 
 static CMDOPS cmd_id = {

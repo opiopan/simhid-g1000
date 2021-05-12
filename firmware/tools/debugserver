@@ -1,0 +1,45 @@
+#!/bin/sh
+
+if [ $# -ne 2 ];then
+    echo invalid syntax >&2
+    exit 1
+fi
+
+HOST=$1
+IMAGE=$2
+
+expect -c "
+    spawn arm-none-eabi-gdb $IMAGE
+    expect \"(gdb)\"
+    send -- \"target remote $HOST:3333\n\"
+    expect \"(gdb)\"
+    send -- \"load\n\"
+    expect \"(gdb)\"
+    send -- \"mon rtt stop \n\"
+    expect \"(gdb)\"
+    send -- \"eval \\\"mon rtt setup %p 512 SEGGER\\\\\\\\ RTT\\\", &_SEGGER_RTT\n\"
+    expect \"(gdb)\"
+    send -- \"mon rtt start \n\"
+    expect \"(gdb)\"
+    send -- \"mon reset halt\n\"
+    expect \"(gdb)\"
+    send -- \"detach\n\"
+    expect \"(gdb)\"
+    send -- \"quit\n\"
+" || exit 1
+
+echo
+
+if [ "$INMAKE" == "" ]; then
+    echo END
+    cat
+else
+    expect -c "
+        spawn telnet $HOST 4444
+        expect \">\"
+        send -- \"reset run\n\"
+        expect \">\"
+        send -- \"exit\n\"
+    "
+    echo
+fi

@@ -14,8 +14,6 @@ extern "C"
 
 #define SWITCHSTATE_MAXLEN (5 + 1 + 4)
 
-#define BOOTMODE_LOG    1
-
 typedef enum {
     SWG_LEFT_RE = 0,
     SWG_LEFT_SW,
@@ -26,7 +24,6 @@ typedef enum {
 
 
 typedef struct {
-    int bootmode;
     int lastupdate_hp;
     int lastupdate_lp;
     VSWITCH_DIRTY_BUF dbuf;

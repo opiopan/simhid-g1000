@@ -7,6 +7,7 @@
 #include "olog.h"
 #include "switch.h"
 #include "switchgroup.h"
+#include "option.h"
 #include "scanner.h"
 
 #define LPF 10000
@@ -313,7 +314,8 @@ BOOL scanner_init(SCANNER_CTX *ctx, SPI_HandleTypeDef *spi, int now)
         logmode = logmode && sw->ops->getrawvalue(sw);
     }
     if (logmode){
-        ctx->bootmode = BOOTMODE_LOG;
+        OPTION_VALUE value = {.type = OPTVAL_BOOL, .data={.boolval = TRUE}};
+        option_setValue(OPT_EVLOG, value);
     }
 
     return !failed;

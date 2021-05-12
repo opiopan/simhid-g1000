@@ -53,6 +53,7 @@ src/scanner.c \
 src/hostprotocol.c \
 src/command.c \
 src/option.c \
+src/version.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c \
@@ -173,7 +174,7 @@ LIBDIR =
 LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 
 # default action: build all
-all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
+all: update_version $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
 
 
 #######################################
@@ -210,7 +211,22 @@ $(BUILD_DIR):
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
-  
+
+#######################################
+# create firmware viersion file
+#######################################
+update_version:
+	@OLD=`if [ -f build/.version ];then cat build/.version;fi`;\
+	NEW=`tools/version`;\
+	if ! [ "$$NEW" = "$$OLD" ];then\
+	    (\
+	        echo 'const char version_string[] = "'"$$NEW"'";';\
+	    ) > src/version.c;\
+	    echo "$$NEW" > build/.version;\
+	    rm -f build/simhid-g1000.bin;\
+	    rm -f build/simhid-g1000.elf;\
+	fi
+
 #######################################
 # download & configure debugger
 #######################################
@@ -253,18 +269,6 @@ initrtt: check_remote all
 "expect \"(gdb)\";"\
 "send -- \"quit\n\";" || exit 1
 	@echo
-	
-update_version:
-	@OLD=`if [ -f build/.version ];then cat build/.version;fi`;\
-	NEW=`tools/version`;\
-	if ! [ "$$NEW" = "$$OLD" ];then\
-	    (echo 'const char version_string[] = "'"$$NEW"'";';\
-	     echo 'const char manufacturer_string[] = "Hiroshi Murayama <opiopan@gmail.com> / Firmware version: '"$$NEW"'";') >\
-	        Src/version.c;\
-	    echo "$$NEW" > build/.version;\
-	    rm -f build/rcstick-f.bin;\
-	    rm -f build/rcstick-f.elf;\
-	fi
 
 check_remote:
 	@if [ "$(DEBUGSERVER)" = "" ];then \

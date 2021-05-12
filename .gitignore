@@ -26,4 +26,4 @@ build
 outputs
 outputs2
 outputs-tiny
-firmware/Src/version.c
+firmware/src/version.c
