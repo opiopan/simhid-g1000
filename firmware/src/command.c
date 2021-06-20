@@ -16,10 +16,10 @@ static const char* PRODUCTNAME = "SimHID G1000";
 static const char* MANUFACTURER = "Hiroshi Murayama <opiopan@gmail.com>";
 static const char* PROTOCOL = "SimHID protocol V1";
 
-    /*========================================================
+/*========================================================
  Error message
 ========================================================*/
-    static const char *ERR_SYNTAX = "syntax error";
+static const char *ERR_SYNTAX = "syntax error";
 static const char* ERR_TOOLONG = "too long line";
 static const char* ERR_TOOMANYPARAM = "parameters of command must be less than 10";
 static const char* ERR_NOCMD = "not supported command";
@@ -28,11 +28,10 @@ static const char *ERR_INVBOOLOPT = "option value must be 0 or 1";
 static const char *ERR_INVINTOPT = "option value must be integer";
 static const char *ERR_TOOLONGOPT = "too long option value";
 
-    /*========================================================
+/*========================================================
  Command parser implementation
 ========================================================*/
-    void
-    command_parser_init(CommandParserCtx * ctx, char *buf, int len)
+void command_parser_init(CommandParserCtx * ctx, char *buf, int len)
 {
     ctx->phase = PARSE_INIT;
     ctx->linebuf = buf;
