@@ -5,8 +5,10 @@ from gerber.render.cairo_backend import GerberCairoContext
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 prefix = 'outputs/left/pcb'
-mcolor = (5.0/255.0, 30.0/255.0, 187/255.0)
-bcolor = (6.0/300.0, 13.0/300.0, 106/300.0)
+mcolor = (22.0/255.0, 127.0/255.0, 18.0/255.0)
+bcolor = (21.0/280.0, 85.0/280.0, 18/280.0)
+#mcolor = (5.0/255.0, 30.0/255.0, 187/255.0)
+#bcolor = (6.0/300.0, 13.0/300.0, 106/300.0)
 
 metal_settings = RenderSettings(color=mcolor)
 bg_settings = RenderSettings(color=bcolor)

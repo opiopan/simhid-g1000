@@ -127,7 +127,7 @@
 <layer number="254" name="cooling" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyYmE2M2My" projecturn="a.cGVyc29uYWw6dWUyYmE2M2MyIzIwMTgwOTE3MTQ5MTY5Mjgx" f3durn="urn:adsk.wipprod:dm.lineage:6ddGwsoNRdCcNz8sAvQdYQ" pcbguid="" lastpulledtime="" lastsyncedchangeguid="" latestrevisionid="9b0fe123-fd3b-4b61-a138-d9c23ab9cc85" lastsyncedrevisionid="9b0fe123-fd3b-4b61-a138-d9c23ab9cc85" lastboardhashguid="a93b4704-0b72-b214-6bf9-9d04de84aae4" lastpushedtime="2021-04-13T05:51:06Z" linktopcb3d="true"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyYmE2M2My" projecturn="a.cGVyc29uYWw6dWUyYmE2M2MyIzIwMTgwOTE3MTQ5MTY5Mjgx" f3durn="urn:adsk.wipprod:dm.lineage:6ddGwsoNRdCcNz8sAvQdYQ" pcbguid="" lastpulledtime="" lastsyncedchangeguid="" latestrevisionid="cc2a4dc4-e200-4016-af02-b88be0bf32b0" lastsyncedrevisionid="cc2a4dc4-e200-4016-af02-b88be0bf32b0" lastboardhashguid="d191e26a-343e-daae-d877-4dd18b740236" lastpushedtime="2021-09-07T03:43:09Z" linktopcb3d="true"/>
 <plain>
 <circle x="27" y="65.6757" radius="1.15" width="0" layer="20"/>
 <circle x="27" y="3" radius="1.15" width="0" layer="20"/>
