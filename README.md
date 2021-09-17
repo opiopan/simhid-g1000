@@ -2,7 +2,7 @@ SimHID G1000
 ===
 <img alt="board image" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/g1000.jpg" width=400 align="right">
 
-SimHID G1000 is a input device that immitates Garmin G1000 glass cockpit system for controlling flight simulators.<br>
+SimHID G1000 is a input device that imitates Garmin G1000 glass cockpit system for controlling flight simulators.<br>
 This device is designed to utilize a iPad as a display.
 iPad, iPad Air or iPad Pro with a display from 10.2 inches to 11 inches can be applied to this device.<br>
 
@@ -24,7 +24,6 @@ The model data for 3D printer and laser cutter are published at [Thingiverse](ht
 
 In this Github repository, PCB design and firmware source codes are hosted.<br>
 Regarding PCB design related information include manufactuaring, please refer README at [here](pcb).<br>
-The firmware source codes are [here](firmware).
 
 Once alll parts of SimHID G1000 are prepared, please assemble those according to [this procedure](docs/how-to-assemble.md).
 

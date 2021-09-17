@@ -4,7 +4,7 @@ PCBs for SimHID G1000
 <img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/pcb.jpg" width=750>
 </p>
 
-The operable parts of SimHID G1000, the rotary encoders and push puttons, are distributed and mountedn on three PCBs.<br>
+The operable parts of SimHID G1000, the rotary encoders and push puttons, are distributed and mounted on three PCBs.<br>
 The right board is the main board. The MCU [STM32F411CCU](https://www.st.com/en/microcontrollers-microprocessors/stm32f411cc.html) which is installed on the right board exports USB full speed PHY and communicate with PC via it.
 That MCU also observes all operable components state via 16bits SPI I/O expanders, [MCP23S18-E/MJ](https://www.microchip.com/en-us/product/MCP23S18), on each PCB.<br>
 Each PCB is connected with each other via 8-wire interconnect that consists 2 for power supply, 3 for SPI, and 3 for chip select.
@@ -12,11 +12,12 @@ Each PCB is connected with each other via 8-wire interconnect that consists 2 fo
 I desined these PCBs using [Autodesk Eagle](https://www.autodesk.com/products/eagle/overview) and same functions embedded in [Autodesk Fusion 360](https://www.autodesk.com/products/fusion-360/overview).<br>
 The design files of each PCB and the files required for manufacturing such as gerber data are hosted below.
 
-- [Eagle designe files](handsoldering/individuals)
-- [Files requeired for manufacturing: PCB.zip](https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/data/PCB.zip)
+- [Eagle design files](handsoldering/individuals)
+- [PCB.zip](https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/data/PCB.zip): Files requeired for manufacturing PCB
+- [assembly.zip](https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/data/assembly.zip): Files required for assemble SMT parts on PCB
 
-The above archive file PCB.zip include not only data required to make PCB such as gerber data, but also files required to assemble electronic components.
-This archive file can be accepted by [JLCPCB PCB assembly service](https://jlcpcb.com) as it is. <br>
+The above both archive files, PCB.zip and assembly.zip, are complient with the rule of [JLCPCB](https://jlcpcb.com).
+You can submit these archive files to [JLCPCB PCB assembly service](https://jlcpcb.com) as it is. <br>
 Please note that the files required to assemble does not indicate all electronic components placement. Following parts are omitted from these files. I assembled these parts by hand-soldering.
 
 Component ID| Product Number 
@@ -30,6 +31,8 @@ SW1, SW27  | [SLLB510100](https://tech.alpsalpine.com/prod/e/html/multicontrol/s
 EC1, EC3, EC5 | [EC12D1524403](https://tech.alpsalpine.com/prod/e/html/encoder/incremental/ec12e/ec12d1524403.html)
 EC2, EC4, EC6, EC7, EC9 | [EC11EBB24C03](https://tech.alpsalpine.com/prod/e/html/encoder/incremental/ec11/ec11ebb24c03.html)
 EC8 | [RKJXT1F42001](https://tech.alpsalpine.com/prod/e/html/multicontrol/switch/rkjxt/rkjxt1f42001.html)
+
+Last but not least, **each PCB thickness should be 1.0mm**. Only in case 1.0mm, the PCB's will be fit to 3D-printed SimHID G1000 housing.
 
 ## Schematic Diagram
 
@@ -63,3 +66,13 @@ SW2, SW3, SW4, SW5, SW6, SW7, SW8, <br>SW9, SW10, SW11, SW12, SW13, SW14,<br> SW
 EC1, EC3, EC5 | EC12D1524403 | 1 axis rotary encoder with push button
 EC2, EC4, EC6, EC7, EC9 | EC11EBB24C03 | 2 axes rotary encoder with push button
 EC8 | RKJXT1F42001 | 4 directional joystick with 1 axis rotary encoder and push button
+
+## Supplement
+### PCB interconnect
+Each PCB are connected to adjacent PCB via the 8 pads janction for interconnect, that are J2, J3, J4 and J5.<br>
+It is recommended to solder the interconnect with the PCBs fixed to the front housing of SimHID G1000 in order to properly adjust the length of the wires connecting between PCBs as below.
+
+<p align="center">
+<img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/interconnect.jpg" width=600>
+</p>
+
