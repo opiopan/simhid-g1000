@@ -64,7 +64,7 @@ typedef struct {
 
 const VSWITCH_OPS SimpleSwitchOps;
 
-#define DEF_SIMPLESW(N, D, M, R, C) static SimpleSwitchCtx N = {\
+#define DEF_SIMPLESW(N, D, M, R, P) static SimpleSwitchCtx N = {\
     .common = (VSWITCH_CTX){\
         .ops = &SimpleSwitchOps,\
         .name = #N,\
@@ -72,7 +72,7 @@ const VSWITCH_OPS SimpleSwitchOps;
     .description = (D),\
     .mask = (M),\
     .reversePolarity = (R),\
-    .changeTime = (C)}
+    .filterPeriod = (P)}
 
 /*========================================================
 Rotary Encoder 

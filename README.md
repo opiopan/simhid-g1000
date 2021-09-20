@@ -128,7 +128,7 @@ In summary, I diceded to design a new proprietary protocol and implement that du
 
 SimHID protocol is designed to be both human readable and machine readable.
 You can observe communication data between a SimHID device and a host by using general terminal emulation software with serial port connectivity such as screen command.<br>
-All commands to the device, responses from the device, and asynchronous events occured by device operation are expressed one line text ending with end of line mark. The end of line mark consists combination of CR and LF, in other words, ```0Dh``` and ```0Ah``` byte sequences or ```"\r\n"``` C sttring.
+All commands to the device, responses from the device, and asynchronous events occured by device operation are expressed one line text ending with end of line mark. The end of line mark consists combination of CR and LF, in other words, ```0Dh``` and ```0Ah``` byte sequences or ```"\r\n"``` C string.
 
 The following is a example of data sent from SimHID G1000 when the 100-feet unit altitude dial is rotated clockwise 3 clicks then rotated counterclockwise 2 clicks.
 ```

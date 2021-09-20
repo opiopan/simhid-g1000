@@ -10,7 +10,7 @@
 #include "option.h"
 #include "scanner.h"
 
-#define LPF 10000
+#define LPF 20000
 #define HP_PERIOD 300   /* usec */
 #define LP_PERIOD 5000  /* usec */
 
