@@ -13,6 +13,11 @@ These additional switches allow you to switch one device between PFD and MFD for
 SimHID G1000 behaves as a USB virtual serial device, and communicate with the host using proprietary protocol named SimHID protocol.
 In order to recognize this protocol and to control switching between PFD and MFD, I made a Windows application called [fsmapper](https://github.com/opiopan/fsmapper).
 
+<p align="center">
+<img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/movie.gif">
+</p>
+
+
 ## How to build
 <p align="center">
 <img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/assembly.jpg" width=750>
