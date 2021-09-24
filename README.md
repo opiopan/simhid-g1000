@@ -1,6 +1,8 @@
 SimHID G1000
 ===
-<img alt="board image" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/g1000.jpg" width=400 align="right">
+<p align="center">
+<img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/movie.gif">
+</p>
 
 SimHID G1000 is a input device that imitates Garmin G1000 glass cockpit system for controlling flight simulators.<br>
 This device is designed to utilize a iPad as a display.
@@ -12,10 +14,6 @@ These additional switches allow you to switch one device between PFD and MFD for
 
 SimHID G1000 behaves as a USB virtual serial device, and communicate with the host using proprietary protocol named SimHID protocol.
 In order to recognize this protocol and to control switching between PFD and MFD, I made a Windows application called [fsmapper](https://github.com/opiopan/fsmapper).
-
-<p align="center">
-<img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/movie.gif">
-</p>
 
 
 ## How to build

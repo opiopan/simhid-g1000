@@ -11,6 +11,7 @@
 #include "option.h"
 #include "version.h"
 #include "command.h"
+#include "olog.h"
 
 static const char* PRODUCTNAME = "SimHID G1000";
 static const char* MANUFACTURER = "Hiroshi Murayama <opiopan@gmail.com>";
@@ -465,6 +466,7 @@ void command_executor_init(CommandExecutorCtx *ctx, CommandParserCtx *command)
 {
     ctx->status = CMD_INIT;
     int cmdchr = command->command;
+    OLOG_LOGD(command->err ? "commmand: parsing error" : "command: command received [%s]", command->command);
     if (command->err){
         ctx->ops = &cmd_err;
     }else if (cmdchr < 0){

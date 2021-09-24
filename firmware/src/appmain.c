@@ -58,8 +58,7 @@ void runApp(APPCONF *conf)
     // main loop
     int lastprint = now;
     VSWITCH_CTX* updated_sw = NULL;
-    while (1)
-    {
+    while (1){
         now = HRTIMER_GETTIME();
         scanner_schedule(&scanner, now);
         VSWITCH_CTX* sw = hostprotocol_schedule(&protocol, now);

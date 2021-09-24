@@ -161,6 +161,10 @@ endif
 # Generate dependency information
 CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 
+ifeq ($(OLOGDEBUG), 1)
+CFLAGS += -DOLOG_LEVEL=4
+endif
+
 
 #######################################
 # LDFLAGS

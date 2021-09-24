@@ -11,6 +11,7 @@
 #include "command.h"
 #include "option.h"
 #include "hostprotocol.h"
+#include "olog.h"
 
 #define LINEBUFLEN 128
 #define RESPBUFLEN 100
@@ -177,6 +178,7 @@ VSWITCH_CTX *hostprotocol_schedule(HostProtocolCtx *ctx, int now)
     if (ctx->sstate == SBUF_SENT){
         sendbuf_remove(ctx->sending_len);
         ctx->sstate = SBUF_FREE;
+        OLOG_LOGD("hostprotocol: complete sending");
     }
 
     /*
@@ -254,6 +256,7 @@ VSWITCH_CTX *hostprotocol_schedule(HostProtocolCtx *ctx, int now)
         ctx->sstate = SBUF_SENDING;
         ctx->sending_len = len;
         CDC_Transmit_FS((uint8_t *)addr, len);
+        OLOG_LOGD("hostprotocol: sending %d bytes", len);
     }
 
     return sw;
