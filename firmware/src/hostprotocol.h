@@ -34,6 +34,7 @@ typedef struct {
     volatile SBUFSTATE sstate;
     int sending_len;
     int send_time;
+    int send_flush_time;
 } HostProtocolCtx;
 
 BOOL hostprotocol_init(HostProtocolCtx* ctx, SCANNER_CTX* scanner);

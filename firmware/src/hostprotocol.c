@@ -16,6 +16,8 @@
 #define LINEBUFLEN 128
 #define RESPBUFLEN 100
 
+#define SENDTIMEOUT (1000 * 1000)
+
 /*========================================================
  Send buffer operations
 ========================================================*/
@@ -175,6 +177,10 @@ VSWITCH_CTX *hostprotocol_schedule(HostProtocolCtx *ctx, int now)
     /*
      * maintain sending buffer
      */
+    if (ctx->sstate == SBUF_SENDING && !CDC_IsTxBusy()){
+        OLOG_LOGD("hostprotocol: reset interface during sending");
+        ctx->sstate = SBUF_SENT;
+    }
     if (ctx->sstate == SBUF_SENT){
         sendbuf_remove(ctx->sending_len);
         ctx->sstate = SBUF_FREE;
@@ -255,6 +261,7 @@ VSWITCH_CTX *hostprotocol_schedule(HostProtocolCtx *ctx, int now)
         int len = sendbuf_datablocklen();
         ctx->sstate = SBUF_SENDING;
         ctx->sending_len = len;
+        ctx->send_flush_time = now;
         CDC_Transmit_FS((uint8_t *)addr, len);
         OLOG_LOGD("hostprotocol: sending %d bytes", len);
     }

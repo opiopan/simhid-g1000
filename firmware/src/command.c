@@ -287,6 +287,8 @@ static int id_schedule(void *ctx, char *respbuf, int len)
         return snprintf(respbuf, len, "I Firmware Version: %s\r\n", version_string);
     }else if (rctx->line == 4){
         return snprintf(respbuf, len, "I Protocol: %s\r\n", PROTOCOL);
+    }else if (rctx->line == 5){
+        return snprintf(respbuf, len, "I\r\n");
     }
 
     return 0;
@@ -295,7 +297,7 @@ static int id_schedule(void *ctx, char *respbuf, int len)
 static BOOL id_isfinished(void *ctx)
 {
     IDCTX *rctx = (IDCTX *)ctx;
-    return rctx->line >= 4;
+    return rctx->line >= 5;
 }
 
 static CMDOPS cmd_id = {
@@ -466,18 +468,23 @@ void command_executor_init(CommandExecutorCtx *ctx, CommandParserCtx *command)
 {
     ctx->status = CMD_INIT;
     int cmdchr = command->command;
-    OLOG_LOGD(command->err ? "commmand: parsing error" : "command: command received [%s]", command->command);
     if (command->err){
+        OLOG_LOGD("commmand: parsing error");
         ctx->ops = &cmd_err;
     }else if (cmdchr < 0){
+        OLOG_LOGD("commmand: NOP");
         ctx->ops = &cmd_nop;
     }else if (cmdchr == 'i' || cmdchr == 'I'){
+        OLOG_LOGD("command: INFORMAITON command");
         ctx->ops = &cmd_id;
     }else if (cmdchr == 'd' || cmdchr == 'D'){
+        OLOG_LOGD("command: DEFINITION command");
         ctx->ops = &cmd_swdef;
     }else if (cmdchr == 'o' || cmdchr == 'O'){
+        OLOG_LOGD("command: OPTION command");
         ctx->ops = &cmd_opt;
     }else{
+        OLOG_LOGD("command: unsupported command [%c]", cmdchr);
         command->err = ERR_NOCMD;
         ctx->ops = &cmd_err;
     }
