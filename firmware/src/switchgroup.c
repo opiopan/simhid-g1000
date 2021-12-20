@@ -27,14 +27,14 @@ static BOOL extswg_init(VSWG_CTX *ctx)
         mask |= sw->ops->getmask(sw);
     }
 
-    BOOL rc = mcp23s18_init(&rctx->exp, extswg_spi, rctx->cs_port, rctx->cs_pin, mask);
-    if (rc){
+    rctx->common.is_valid = mcp23s18_init(&rctx->exp, extswg_spi, rctx->cs_port, rctx->cs_pin, mask);
+    if (rctx->common.is_valid){
         OLOG_LOGI("switchgroup: MCP23S13 has been initialized for %s", rctx->common.name);
     }else{
         OLOG_LOGE("switchgroup: Initializing MCP23S13 for %s failed", rctx->common.name);
     }
 
-    return rc;
+    return rctx->common.is_valid;
 }
 
 static BOOL extswg_scan(VSWG_CTX *ctx, VSWITCH_DIRTY_BUF *dbuf, int now)
@@ -71,6 +71,7 @@ const VSWG_OPS EXTSWG_OPS = {
 ========================================================*/
 static BOOL directswg_init(VSWG_CTX *ctx)
 {
+    ctx->is_valid = TRUE;
     return TRUE;
 }
 

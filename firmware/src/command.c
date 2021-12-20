@@ -266,13 +266,16 @@ static CMDOPS cmd_err = {
  Identifier command
 --------------------------------------------------------*/
 typedef struct{
-    int line;    
+    int line;
+    int swg_num;
 }IDCTX;
 
 static void id_init(void *ctx, CommandParserCtx *cmd)
 {
     IDCTX* rctx = (IDCTX*)ctx;
     rctx->line = 0;
+    SCANNER_CTX *scanner = app_getScannerCtx();
+    rctx->swg_num = scanner_getswgnum(scanner);
 }
 
 static int id_schedule(void *ctx, char *respbuf, int len)
@@ -288,7 +291,14 @@ static int id_schedule(void *ctx, char *respbuf, int len)
     }else if (rctx->line == 4){
         return snprintf(respbuf, len, "I Protocol: %s\r\n", PROTOCOL);
     }else if (rctx->line == 5){
-        return snprintf(respbuf, len, "I\r\n");
+        return snprintf(respbuf, len, "I BIT Result:");
+    }else if (rctx->line < 6 + rctx->swg_num){
+        SCANNER_CTX *scanner = app_getScannerCtx();
+        VSWG_CTX* swg =  scanner_getswg(scanner, rctx->line - 6);
+        const char* status = swg->is_valid ? "OK" : "Failure";
+        return snprintf(respbuf, len, " [%s = %s]", swg->name, status);
+    }else if (rctx->line == 6 + rctx->swg_num){
+        return snprintf(respbuf, len, "\r\nI\r\n");
     }
 
     return 0;
@@ -297,7 +307,7 @@ static int id_schedule(void *ctx, char *respbuf, int len)
 static BOOL id_isfinished(void *ctx)
 {
     IDCTX *rctx = (IDCTX *)ctx;
-    return rctx->line >= 5;
+    return rctx->line >= 6 + rctx->swg_num;
 }
 
 static CMDOPS cmd_id = {
