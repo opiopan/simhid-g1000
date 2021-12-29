@@ -214,12 +214,14 @@ $(BUILD_DIR):
 # clean up
 #######################################
 clean:
-	-rm -fR $(BUILD_DIR)
+	-rm -fR $(BUILD_DIR) src/version.c
 
 #######################################
 # create firmware viersion file
 #######################################
-update_version:
+src/version.c:
+
+update_version: $(BUILD_DIR)
 	@OLD=`if [ -f build/.version ];then cat build/.version;fi`;\
 	NEW=`tools/version`;\
 	if ! [ "$$NEW" = "$$OLD" ];then\
