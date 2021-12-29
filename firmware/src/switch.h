@@ -62,7 +62,7 @@ typedef struct {
     int  filterPeriod;
 }SimpleSwitchCtx;
 
-const VSWITCH_OPS SimpleSwitchOps;
+extern const VSWITCH_OPS SimpleSwitchOps;
 
 #define DEF_SIMPLESW(N, D, M, R, P) static SimpleSwitchCtx N = {\
     .common = (VSWITCH_CTX){\
@@ -98,7 +98,7 @@ typedef struct {
     int last;
 }RotaryEncoderCtx;
 
-const VSWITCH_OPS RotaryEncoderOps;
+extern const VSWITCH_OPS RotaryEncoderOps;
 
 #define DEF_ROTARYENC(N, D, A, B) static RotaryEncoderCtx N = {\
     .common = (VSWITCH_CTX){\

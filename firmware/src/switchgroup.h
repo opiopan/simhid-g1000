@@ -50,7 +50,7 @@ typedef struct{
 
 void extswg_initenv(SPI_HandleTypeDef *spi);
 
-const VSWG_OPS EXTSWG_OPS;
+extern const VSWG_OPS EXTSWG_OPS;
 
 #define DEFEXTSWG(NM, SWS, NUM, CS, FILTER) {\
     .common = (VSWG_CTX){\
@@ -82,7 +82,7 @@ typedef struct{
     int gpionum;
 }DIRECTSWG_CTX;
 
-const VSWG_OPS DIRECTSWG_OPS;
+extern const VSWG_OPS DIRECTSWG_OPS;
 
 #define DEFDIRECTSWG(NM, SWS, SWNUM, GPIOS, GPIONUM, FILTER) {\
     .common = (VSWG_CTX){\
