@@ -307,7 +307,11 @@ static int id_schedule(void *ctx, char *respbuf, int len)
 static BOOL id_isfinished(void *ctx)
 {
     IDCTX *rctx = (IDCTX *)ctx;
+#ifdef ENABLE_RICH_IDENTIFIER
     return rctx->line >= 6 + rctx->swg_num;
+#else
+    return rctx->line >= 4;
+#endif
 }
 
 static CMDOPS cmd_id = {

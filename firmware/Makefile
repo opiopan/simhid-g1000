@@ -165,6 +165,9 @@ ifeq ($(OLOGDEBUG), 1)
 CFLAGS += -DOLOG_LEVEL=4
 endif
 
+ifeq ($(RICH_IDENTIFIER)), 1)
+CFLAGS += ENABLE_RICH_IDENTIFIER
+endif
 
 #######################################
 # LDFLAGS
