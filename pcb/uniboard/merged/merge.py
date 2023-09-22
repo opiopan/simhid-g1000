@@ -5,13 +5,16 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../../pcbalib'))
 import jlcpcb
 
 exts = ['GTL', 'GTO', 'GTP', 'GTS', 'GBL', 'GBO', 'GBP', 'GBS', 'TXT']
+additional_parts_right = [
+    jlcpcb.Component('EC8', (18.0, 78.401), 0.0, jlcpcb.TOP),
+]
 boards=[
     ('../individuals/CAMOutputs/simhid-g1000_left.', 0, 0, 0),
-    ('../individuals/CAMOutputs/simhid-g1000_right.', 57.05, 0, 0),
-    ('../individuals/CAMOutputs/simhid-g1000_bottom.', 40.05, 224, -90),
+    ('../individuals/CAMOutputs/simhid-g1000_right.', 274.584, 0, 0, additional_parts_right),
+    ('../individuals/CAMOutputs/simhid-g1000_bottom.', 35.05, 0, 0),
 ]
 outline = 'outline.dxf'
-mousebites = 'mousebites.dxf'
+mousebites = None
 outputs = 'outputs/simhid-g1000'
 cpl = 'outputs/CPL.csv'
 
@@ -38,11 +41,12 @@ for ext in exts:
         ctx.merge(file)
         print('.', end='', flush=True)
     if ext == 'TXT':
-        file = gerberex.read(mousebites)
-        file.draw_mode = DxfFile.DM_MOUSE_BITES
-        file.width = 0.5
-        file.format = (3, 3)
-        ctx.merge(file)
+        if mousebites:
+            file = gerberex.read(mousebites)
+            file.draw_mode = DxfFile.DM_MOUSE_BITES
+            file.width = 0.5
+            file.format = (3, 3)
+            ctx.merge(file)
     else:
         file = gerberex.read(outline)
         ctx.merge(file)
@@ -50,17 +54,27 @@ for ext in exts:
     print(' end', flush=True)
 
 print('generating CPL: ', end='', flush=True)
+offset_angles = {
+    'SOT-23-3_L2.9-W1.3-P1.90-LS2.4-BR': -90,
+    'QFN-48_L7.0-W7.0-P0.50-BL-EP5.1': -90,
+    'QFN-28_L6.0-W6.0-P0.65-BL-EP3.7': -90,
+    'SW-TH_EC12D1524403': ((0.15, 1.35), 180),
+    'SW-TH_EC11EBB24C03': ((0, 1), 180),
+    'SW-SMD_SLLB510100': ((0, 0.4), 0)
+}
 ctx = jlcpcb.Composition()
-ctx.setBom('BOM.csv')
+ctx.setBom('BOM.csv', offset_angles)
 for board in boards:
     print('.', end='', flush=True)
     file = jlcpcb.MountFile()
     file.load(board[0] + 'mnt', jlcpcb.TOP)
+    if len(board) > 4:
+        file.append(board[4])
     file.rotate(board[3])
     file.offset(board[1], board[2])
     ctx.merge(file)
     file = jlcpcb.MountFile()
-    file.load(board[0] + 'mnb', jlcpcb.BOTTOM)
+    file.load(board[0] + 'mnb', jlcpcb.BOTTOM, exclude=['EC1','EC2','EC3','EC4','EC5','EC6','EC7','EC9'])
     file.rotate(board[3])
     file.offset(board[1], board[2])
     ctx.merge(file)
