@@ -1725,91 +1725,6 @@ by exp-lbrs.ulp</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="ZX62-B-5PA(33)" urn="urn:adsk.eagle:library:5503325">
-<description>&lt;USB Connectors MICRO B RECEPT RA SMT BTTM MNT&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
-<packages>
-<package name="ZX62-B-5PA(33)-TRUE-HANDSOLD" urn="urn:adsk.eagle:footprint:5503328/1" library_version="2">
-<smd name="11" x="4" y="0" dx="1.8" dy="1.9" layer="1"/>
-<smd name="10" x="-4" y="0" dx="1.8" dy="1.9" layer="1"/>
-<smd name="3" x="0" y="2.875" dx="0.4" dy="1.75" layer="1"/>
-<smd name="4" x="0.65" y="2.875" dx="0.4" dy="1.75" layer="1"/>
-<smd name="2" x="-0.65" y="2.875" dx="0.4" dy="1.75" layer="1"/>
-<smd name="5" x="1.3" y="2.875" dx="0.4" dy="1.75" layer="1"/>
-<smd name="1" x="-1.3" y="2.875" dx="0.4" dy="1.75" layer="1"/>
-<smd name="7" x="3.1" y="2.55" dx="2.1" dy="1.6" layer="1"/>
-<smd name="6" x="-3.1" y="2.55" dx="2.1" dy="1.6" layer="1"/>
-<wire x1="-3.75" y1="-1.45" x2="3.75" y2="-1.45" width="0.127" layer="51" style="shortdash"/>
-<wire x1="-3.75" y1="2.85" x2="3.75" y2="2.85" width="0.127" layer="51"/>
-<wire x1="3.75" y1="2.85" x2="3.75" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="3.75" y1="-1.45" x2="3.75" y2="-2.75" width="0.127" layer="51"/>
-<wire x1="3.75" y1="-2.75" x2="-3.75" y2="-2.75" width="0.127" layer="51"/>
-<wire x1="-3.75" y1="-2.75" x2="-3.75" y2="-1.45" width="0.127" layer="51"/>
-<wire x1="-3.75" y1="-1.45" x2="-3.75" y2="2.85" width="0.127" layer="51"/>
-<text x="0" y="3.937" size="1.016" layer="25" font="vector" align="bottom-center">&gt;NAME</text>
-<pad name="8" x="-1.2" y="0" drill="1.2" diameter="1.9" shape="square"/>
-<pad name="9" x="1.2" y="0" drill="1.2" diameter="1.9" shape="square"/>
-</package>
-</packages>
-<packages3d>
-<package3d name="ZX62-B-5PA(33)-TRUE-HANDSOLD" urn="urn:adsk.eagle:package:5503334/4" type="model" library_version="3">
-<packageinstances>
-<packageinstance name="ZX62-B-5PA(33)-TRUE-HANDSOLD"/>
-</packageinstances>
-</package3d>
-</packages3d>
-<symbols>
-<symbol name="ZX62-B-5PA(33)-ORG" urn="urn:adsk.eagle:symbol:5503332/2" library_version="2">
-<wire x1="5.08" y1="2.54" x2="35.56" y2="2.54" width="0.254" layer="94"/>
-<wire x1="35.56" y1="-10.16" x2="35.56" y2="2.54" width="0.254" layer="94"/>
-<wire x1="35.56" y1="-10.16" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
-<text x="18.542" y="7.112" size="1.778" layer="95" align="center">&gt;NAME</text>
-<text x="18.542" y="4.572" size="1.778" layer="96" align="center">&gt;VALUE</text>
-<pin name="V+" x="0" y="0" length="middle"/>
-<pin name="D+" x="0" y="-5.08" length="middle"/>
-<pin name="GND" x="0" y="-7.62" length="middle"/>
-<pin name="D-" x="0" y="-2.54" length="middle"/>
-<pin name="4" x="40.64" y="-2.54" length="middle" rot="R180"/>
-<pin name="PG1" x="15.24" y="-15.24" length="middle" rot="R90"/>
-<pin name="PG2" x="17.78" y="-15.24" length="middle" rot="R90"/>
-<pin name="PG3" x="20.32" y="-15.24" length="middle" rot="R90"/>
-<pin name="PG4" x="22.86" y="-15.24" length="middle" rot="R90"/>
-<pin name="PG5" x="25.4" y="-15.24" length="middle" rot="R90"/>
-<pin name="PG6" x="27.94" y="-15.24" length="middle" rot="R90"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="ZX62-B-5PA(33)-FULL" urn="urn:adsk.eagle:component:20111941/2" library_version="3">
-<gates>
-<gate name="G$1" symbol="ZX62-B-5PA(33)-ORG" x="-17.78" y="5.08"/>
-</gates>
-<devices>
-<device name="" package="ZX62-B-5PA(33)-TRUE-HANDSOLD">
-<connects>
-<connect gate="G$1" pin="4" pad="4"/>
-<connect gate="G$1" pin="D+" pad="3"/>
-<connect gate="G$1" pin="D-" pad="2"/>
-<connect gate="G$1" pin="GND" pad="5"/>
-<connect gate="G$1" pin="PG1" pad="6"/>
-<connect gate="G$1" pin="PG2" pad="7"/>
-<connect gate="G$1" pin="PG3" pad="8"/>
-<connect gate="G$1" pin="PG4" pad="9"/>
-<connect gate="G$1" pin="PG5" pad="10"/>
-<connect gate="G$1" pin="PG6" pad="11"/>
-<connect gate="G$1" pin="V+" pad="1"/>
-</connects>
-<package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:5503334/4"/>
-</package3dinstances>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="MCP23S17-E_ML" urn="urn:adsk.eagle:library:27859769">
 <description>&lt;16-Bit I/O Port Expander SPI 10M QFN28EP Microchip MCP23S17-E/ML, 16-channel 16bit I/O Expander 10MHz, Serial-SPI, 28-Pin QFN&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
@@ -1970,6 +1885,132 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </deviceset>
 </devicesets>
 </library>
+<library name="USB-connectors" urn="urn:adsk.eagle:library:41675151">
+<packages>
+<package name="1051330031" urn="urn:adsk.eagle:footprint:41675152/2" library_version="3">
+<smd name="3" x="0" y="0.75" dx="0.45" dy="1.5" layer="1"/>
+<smd name="1" x="-1.3" y="0.75" dx="0.45" dy="1.5" layer="1"/>
+<smd name="2" x="-0.65" y="0.75" dx="0.45" dy="1.5" layer="1"/>
+<smd name="4" x="0.65" y="0.75" dx="0.45" dy="1.5" layer="1"/>
+<smd name="5" x="1.3" y="0.75" dx="0.45" dy="1.5" layer="1"/>
+<pad name="G1" x="-2.8" y="1" drill="0.5" diameter="1.1" shape="long"/>
+<pad name="G2" x="2.8" y="1" drill="0.5" diameter="1.1" shape="long"/>
+<pad name="G3" x="0" y="-1.15" drill="0.5" diameter="1.1" shape="long"/>
+<wire x1="-3.35" y1="0.75" x2="-2.25" y2="0.75" width="0" layer="20"/>
+<wire x1="-3.35" y1="1.25" x2="-2.25" y2="1.25" width="0" layer="20"/>
+<wire x1="-2.25" y1="1.25" x2="-2.25" y2="0.75" width="0" layer="20" curve="-180"/>
+<wire x1="-3.35" y1="0.75" x2="-3.35" y2="1.25" width="0" layer="20" curve="-180"/>
+<wire x1="2.25" y1="0.75" x2="3.35" y2="0.75" width="0" layer="20"/>
+<wire x1="2.25" y1="1.25" x2="3.35" y2="1.25" width="0" layer="20"/>
+<wire x1="3.35" y1="1.25" x2="3.35" y2="0.75" width="0" layer="20" curve="-180"/>
+<wire x1="2.25" y1="0.75" x2="2.25" y2="1.25" width="0" layer="20" curve="-180"/>
+<wire x1="-0.55" y1="-1.4" x2="0.55" y2="-1.4" width="0" layer="20"/>
+<wire x1="-0.55" y1="-0.9" x2="0.55" y2="-0.9" width="0" layer="20"/>
+<wire x1="0.55" y1="-0.9" x2="0.55" y2="-1.4" width="0" layer="20" curve="-180"/>
+<wire x1="-0.55" y1="-1.4" x2="-0.55" y2="-0.9" width="0" layer="20" curve="-180"/>
+<text x="-0.013" y="1.929" size="1.016" layer="25" font="vector" align="bottom-center">&gt;NAME</text>
+</package>
+<package name="1051330031-HS" urn="urn:adsk.eagle:footprint:41675480/1" library_version="3">
+<smd name="3" x="0" y="1.25" dx="0.45" dy="2.5" layer="1"/>
+<smd name="1" x="-1.3" y="1.25" dx="0.45" dy="2.5" layer="1"/>
+<smd name="2" x="-0.65" y="1.25" dx="0.45" dy="2.5" layer="1"/>
+<smd name="4" x="0.65" y="1.25" dx="0.45" dy="2.5" layer="1"/>
+<smd name="5" x="1.3" y="1.25" dx="0.45" dy="2.5" layer="1"/>
+<pad name="G1" x="-2.8" y="1" drill="0.5" diameter="1.1" shape="long"/>
+<pad name="G2" x="2.8" y="1" drill="0.5" diameter="1.1" shape="long"/>
+<pad name="G3" x="0" y="-1.15" drill="0.5" diameter="1.1" shape="long"/>
+<wire x1="-3.35" y1="0.75" x2="-2.25" y2="0.75" width="0" layer="20"/>
+<wire x1="-3.35" y1="1.25" x2="-2.25" y2="1.25" width="0" layer="20"/>
+<wire x1="-2.25" y1="1.25" x2="-2.25" y2="0.75" width="0" layer="20" curve="-180"/>
+<wire x1="-3.35" y1="0.75" x2="-3.35" y2="1.25" width="0" layer="20" curve="-180"/>
+<wire x1="2.25" y1="0.75" x2="3.35" y2="0.75" width="0" layer="20"/>
+<wire x1="2.25" y1="1.25" x2="3.35" y2="1.25" width="0" layer="20"/>
+<wire x1="3.35" y1="1.25" x2="3.35" y2="0.75" width="0" layer="20" curve="-180"/>
+<wire x1="2.25" y1="0.75" x2="2.25" y2="1.25" width="0" layer="20" curve="-180"/>
+<wire x1="-0.55" y1="-1.4" x2="0.55" y2="-1.4" width="0" layer="20"/>
+<wire x1="-0.55" y1="-0.9" x2="0.55" y2="-0.9" width="0" layer="20"/>
+<wire x1="0.55" y1="-0.9" x2="0.55" y2="-1.4" width="0" layer="20" curve="-180"/>
+<wire x1="-0.55" y1="-1.4" x2="-0.55" y2="-0.9" width="0" layer="20" curve="-180"/>
+<text x="-0.013" y="2.945" size="1.016" layer="25" font="vector" align="bottom-center">&gt;NAME</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="1051330031-HS" urn="urn:adsk.eagle:package:41675482/3" type="model" library_version="6">
+<packageinstances>
+<packageinstance name="1051330031-HS"/>
+</packageinstances>
+</package3d>
+<package3d name="1051330031" urn="urn:adsk.eagle:package:41675153/4" type="model" library_version="6">
+<packageinstances>
+<packageinstance name="1051330031"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="105133031" urn="urn:adsk.eagle:symbol:41675481/2" library_version="3">
+<wire x1="5.08" y1="2.54" x2="25.4" y2="2.54" width="0.254" layer="94"/>
+<wire x1="25.4" y1="-10.16" x2="25.4" y2="2.54" width="0.254" layer="94"/>
+<wire x1="25.4" y1="-10.16" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
+<text x="16.002" y="7.112" size="1.778" layer="95" align="center">&gt;NAME</text>
+<text x="16.002" y="4.572" size="1.778" layer="96" align="center">&gt;VALUE</text>
+<pin name="V+" x="0" y="0" length="middle"/>
+<pin name="D+" x="0" y="-5.08" length="middle"/>
+<pin name="GND" x="0" y="-7.62" length="middle"/>
+<pin name="D-" x="0" y="-2.54" length="middle"/>
+<pin name="4" x="30.48" y="0" length="middle" rot="R180"/>
+<pin name="PG1" x="15.24" y="-15.24" length="middle" rot="R90"/>
+<pin name="PG2" x="17.78" y="-15.24" length="middle" rot="R90"/>
+<pin name="PG3" x="20.32" y="-15.24" length="middle" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="1051330031" urn="urn:adsk.eagle:component:41675483/5" prefix="J" library_version="6">
+<description>Connector: USB B micro; PIN: 5; SMT; vertical; socket; on PCBs</description>
+<gates>
+<gate name="G$1" symbol="105133031" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="1051330031">
+<connects>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="D+" pad="3"/>
+<connect gate="G$1" pin="D-" pad="2"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="PG1" pad="G1"/>
+<connect gate="G$1" pin="PG2" pad="G2"/>
+<connect gate="G$1" pin="PG3" pad="G3"/>
+<connect gate="G$1" pin="V+" pad="1"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:41675153/4"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="-HS" package="1051330031-HS">
+<connects>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="D+" pad="3"/>
+<connect gate="G$1" pin="D-" pad="2"/>
+<connect gate="G$1" pin="GND" pad="5"/>
+<connect gate="G$1" pin="PG1" pad="G1"/>
+<connect gate="G$1" pin="PG2" pad="G2"/>
+<connect gate="G$1" pin="PG3" pad="G3"/>
+<connect gate="G$1" pin="V+" pad="1"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:41675482/3"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1992,13 +2033,13 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <part name="C4" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="1u"/>
 <part name="C5" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="1u"/>
 <part name="+3V1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
-<part name="U4" library="stm32" library_urn="urn:adsk.eagle:library:7041200" deviceset="STM32F411CCU*" device="" package3d_urn="urn:adsk.eagle:package:27785431/5" value="STM32F411CCU"/>
+<part name="U4" library="stm32" library_urn="urn:adsk.eagle:library:7041200" deviceset="STM32F411CCU*" device="-ALT" package3d_urn="urn:adsk.eagle:package:27966747/2" value="STM32F411CCU-ALT"/>
 <part name="C6" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="22pF"/>
 <part name="C7" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="22pF"/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="X1" library="CRYSTAL3225" library_urn="urn:adsk.eagle:library:8815235" deviceset="CRYSTAL3225" device="HS" package3d_urn="urn:adsk.eagle:package:8815239/5" value="16MHz/10pF"/>
 <part name="J6" library="connector" library_urn="urn:adsk.eagle:library:5418080" deviceset="53047-0410" device="" package3d_urn="urn:adsk.eagle:package:5418110/5" value="2212S"/>
-<part name="J4" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="" package3d_urn="urn:adsk.eagle:package:27646017/2"/>
+<part name="J4" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="-RB" package3d_urn="urn:adsk.eagle:package:41620115/5" value="PCB-INTERCONNECT-RB"/>
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U5" library="MCP23S17-E_ML" library_urn="urn:adsk.eagle:library:27859769" deviceset="MCP23S17-E_ML" device="" package3d_urn="urn:adsk.eagle:package:27859776/3" value="MCP23S18-E/MJ"/>
@@ -2088,8 +2129,8 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <part name="C14" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="100nF"/>
 <part name="C15" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="100nF"/>
 <part name="C16" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="4.7uF"/>
-<part name="J5" library="ZX62-B-5PA(33)" library_urn="urn:adsk.eagle:library:5503325" deviceset="ZX62-B-5PA(33)-FULL" device="" package3d_urn="urn:adsk.eagle:package:5503334/4"/>
 <part name="C20" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="100nF"/>
+<part name="J5" library="USB-connectors" library_urn="urn:adsk.eagle:library:41675151" deviceset="1051330031" device="-HS" package3d_urn="urn:adsk.eagle:package:41675482/3"/>
 </parts>
 <sheets>
 <sheet>
@@ -2107,11 +2148,11 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <text x="203.2" y="266.7" size="5.08" layer="94" align="bottom-center">SimHID G1000 - Right PCB</text>
 </plain>
 <instances>
-<instance part="P+1" gate="1" x="22.86" y="243.84" smashed="yes" rot="MR0">
-<attribute name="VALUE" x="23.622" y="243.84" size="1.778" layer="96" rot="MR0" align="bottom-right"/>
+<instance part="P+1" gate="1" x="30.48" y="241.3" smashed="yes" rot="MR0">
+<attribute name="VALUE" x="31.242" y="241.3" size="1.778" layer="96" rot="MR0" align="bottom-right"/>
 </instance>
-<instance part="GND1" gate="1" x="55.88" y="210.82" smashed="yes">
-<attribute name="VALUE" x="53.34" y="208.28" size="1.778" layer="96"/>
+<instance part="GND1" gate="1" x="53.34" y="210.82" smashed="yes">
+<attribute name="VALUE" x="50.8" y="208.28" size="1.778" layer="96"/>
 </instance>
 <instance part="U6" gate="G$1" x="147.32" y="210.82" smashed="yes">
 <attribute name="NAME" x="121.92" y="238.76" size="1.778" layer="95" align="center"/>
@@ -2170,7 +2211,7 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </instance>
 <instance part="U5" gate="G$1" x="101.6" y="45.72" smashed="yes">
 <attribute name="NAME" x="116.84" y="50.8" size="1.778" layer="95" align="center"/>
-<attribute name="VALUE" x="117.094" y="3.302" size="1.778" layer="96" align="center"/>
+<attribute name="VALUE" x="116.84" y="2.54" size="1.778" layer="96" align="center"/>
 </instance>
 <instance part="C19" gate="G$1" x="160.02" y="20.32" smashed="yes">
 <attribute name="NAME" x="161.544" y="20.701" size="1.778" layer="95"/>
@@ -2491,13 +2532,13 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <attribute name="NAME" x="26.924" y="168.021" size="1.778" layer="95"/>
 <attribute name="VALUE" x="26.924" y="162.941" size="1.778" layer="96"/>
 </instance>
-<instance part="J5" gate="G$1" x="27.94" y="233.68" smashed="yes">
-<attribute name="NAME" x="46.482" y="240.792" size="1.778" layer="95" align="center"/>
-<attribute name="VALUE" x="46.482" y="238.252" size="1.778" layer="96" align="center"/>
-</instance>
 <instance part="C20" gate="G$1" x="86.36" y="114.3" smashed="yes">
 <attribute name="NAME" x="87.884" y="114.681" size="1.778" layer="95"/>
 <attribute name="VALUE" x="87.884" y="109.601" size="1.778" layer="96"/>
+</instance>
+<instance part="J5" gate="G$1" x="33.02" y="233.68" smashed="yes">
+<attribute name="NAME" x="49.022" y="240.792" size="1.778" layer="95" align="center"/>
+<attribute name="VALUE" x="49.022" y="238.252" size="1.778" layer="96" align="center"/>
 </instance>
 </instances>
 <busses>
@@ -2506,9 +2547,9 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <net name="+5V" class="2">
 <segment>
 <pinref part="P+1" gate="1" pin="+5V"/>
-<wire x1="27.94" y1="233.68" x2="22.86" y2="233.68" width="0.1524" layer="91"/>
-<wire x1="22.86" y1="233.68" x2="22.86" y2="241.3" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="233.68" x2="30.48" y2="238.76" width="0.1524" layer="91"/>
 <pinref part="J5" gate="G$1" pin="V+"/>
+<wire x1="33.02" y1="233.68" x2="30.48" y2="233.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U6" gate="G$1" pin="VIN"/>
@@ -2537,34 +2578,22 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </segment>
 <segment>
 <pinref part="GND1" gate="1" pin="GND"/>
-<wire x1="55.88" y1="218.44" x2="55.88" y2="215.9" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="215.9" x2="55.88" y2="213.36" width="0.1524" layer="91"/>
-<wire x1="45.72" y1="218.44" x2="45.72" y2="215.9" width="0.1524" layer="91"/>
-<wire x1="45.72" y1="215.9" x2="48.26" y2="215.9" width="0.1524" layer="91"/>
-<junction x="55.88" y="215.9"/>
-<wire x1="48.26" y1="215.9" x2="50.8" y2="215.9" width="0.1524" layer="91"/>
-<wire x1="50.8" y1="215.9" x2="53.34" y2="215.9" width="0.1524" layer="91"/>
-<wire x1="53.34" y1="215.9" x2="55.88" y2="215.9" width="0.1524" layer="91"/>
-<wire x1="48.26" y1="218.44" x2="48.26" y2="215.9" width="0.1524" layer="91"/>
-<junction x="48.26" y="215.9"/>
 <wire x1="50.8" y1="218.44" x2="50.8" y2="215.9" width="0.1524" layer="91"/>
-<junction x="50.8" y="215.9"/>
+<wire x1="50.8" y1="215.9" x2="53.34" y2="215.9" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="215.9" x2="53.34" y2="213.36" width="0.1524" layer="91"/>
 <wire x1="53.34" y1="218.44" x2="53.34" y2="215.9" width="0.1524" layer="91"/>
 <junction x="53.34" y="215.9"/>
+<wire x1="50.8" y1="215.9" x2="48.26" y2="215.9" width="0.1524" layer="91"/>
+<junction x="50.8" y="215.9"/>
+<wire x1="48.26" y1="215.9" x2="48.26" y2="218.44" width="0.1524" layer="91"/>
+<wire x1="48.26" y1="215.9" x2="30.48" y2="215.9" width="0.1524" layer="91"/>
+<junction x="48.26" y="215.9"/>
+<wire x1="30.48" y1="215.9" x2="30.48" y2="226.06" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="226.06" x2="33.02" y2="226.06" width="0.1524" layer="91"/>
+<pinref part="J5" gate="G$1" pin="GND"/>
+<pinref part="J5" gate="G$1" pin="PG1"/>
 <pinref part="J5" gate="G$1" pin="PG2"/>
 <pinref part="J5" gate="G$1" pin="PG3"/>
-<pinref part="J5" gate="G$1" pin="PG4"/>
-<pinref part="J5" gate="G$1" pin="PG5"/>
-<pinref part="J5" gate="G$1" pin="PG6"/>
-<wire x1="45.72" y1="215.9" x2="43.18" y2="215.9" width="0.1524" layer="91"/>
-<junction x="45.72" y="215.9"/>
-<pinref part="J5" gate="G$1" pin="PG1"/>
-<wire x1="43.18" y1="215.9" x2="43.18" y2="218.44" width="0.1524" layer="91"/>
-<wire x1="43.18" y1="215.9" x2="25.4" y2="215.9" width="0.1524" layer="91"/>
-<junction x="43.18" y="215.9"/>
-<wire x1="25.4" y1="215.9" x2="25.4" y2="226.06" width="0.1524" layer="91"/>
-<pinref part="J5" gate="G$1" pin="GND"/>
-<wire x1="25.4" y1="226.06" x2="27.94" y2="226.06" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C6" gate="G$1" pin="2"/>
@@ -2601,18 +2630,18 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <wire x1="132.08" y1="20.32" x2="142.24" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="20.32" x2="142.24" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="GND4" gate="1" pin="GND"/>
-<pinref part="U5" gate="G$1" pin="A0"/>
+<pinref part="U5" gate="G$1" pin="A2"/>
 <wire x1="142.24" y1="15.24" x2="142.24" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="12.7" x2="142.24" y2="10.16" width="0.1524" layer="91"/>
 <wire x1="142.24" y1="10.16" x2="142.24" y2="7.62" width="0.1524" layer="91"/>
-<wire x1="132.08" y1="15.24" x2="142.24" y2="15.24" width="0.1524" layer="91"/>
-<junction x="142.24" y="15.24"/>
+<wire x1="132.08" y1="10.16" x2="142.24" y2="10.16" width="0.1524" layer="91"/>
+<junction x="142.24" y="10.16"/>
 <pinref part="U5" gate="G$1" pin="A1"/>
 <wire x1="132.08" y1="12.7" x2="142.24" y2="12.7" width="0.1524" layer="91"/>
 <junction x="142.24" y="12.7"/>
-<pinref part="U5" gate="G$1" pin="A2"/>
-<wire x1="132.08" y1="10.16" x2="142.24" y2="10.16" width="0.1524" layer="91"/>
-<junction x="142.24" y="10.16"/>
+<pinref part="U5" gate="G$1" pin="A0"/>
+<wire x1="132.08" y1="15.24" x2="142.24" y2="15.24" width="0.1524" layer="91"/>
+<junction x="142.24" y="15.24"/>
 </segment>
 <segment>
 <pinref part="C19" gate="G$1" pin="2"/>
@@ -3065,8 +3094,8 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </net>
 <net name="USB_D-" class="0">
 <segment>
-<wire x1="27.94" y1="231.14" x2="17.78" y2="231.14" width="0.1524" layer="91"/>
-<label x="17.78" y="231.14" size="1.778" layer="95"/>
+<wire x1="33.02" y1="231.14" x2="22.86" y2="231.14" width="0.1524" layer="91"/>
+<label x="22.86" y="231.14" size="1.778" layer="95"/>
 <pinref part="J5" gate="G$1" pin="D-"/>
 </segment>
 <segment>
@@ -3077,8 +3106,8 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </net>
 <net name="USB_D+" class="0">
 <segment>
-<wire x1="27.94" y1="228.6" x2="17.78" y2="228.6" width="0.1524" layer="91"/>
-<label x="17.78" y="228.6" size="1.778" layer="95"/>
+<wire x1="33.02" y1="228.6" x2="22.86" y2="228.6" width="0.1524" layer="91"/>
+<label x="22.86" y="228.6" size="1.778" layer="95"/>
 <pinref part="J5" gate="G$1" pin="D+"/>
 </segment>
 <segment>
@@ -3869,8 +3898,8 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <pinref part="U5" gate="G$1" pin="!RESET"/>
 <wire x1="132.08" y1="7.62" x2="134.62" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="134.62" y1="7.62" x2="134.62" y2="0" width="0.1524" layer="91"/>
-<pinref part="R24" gate="G$1" pin="1"/>
 <wire x1="134.62" y1="0" x2="149.86" y2="0" width="0.1524" layer="91"/>
+<pinref part="R24" gate="G$1" pin="1"/>
 <wire x1="149.86" y1="0" x2="149.86" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 </net>

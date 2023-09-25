@@ -783,7 +783,7 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </class>
 </classes>
 <parts>
-<part name="J2" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="" package3d_urn="urn:adsk.eagle:package:27646017/2"/>
+<part name="J2" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="-LB" package3d_urn="urn:adsk.eagle:package:41622066/4" value="PCB-INTERCONNECT-LB"/>
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U3" library="MCP23S17-E_ML" library_urn="urn:adsk.eagle:library:27859769" deviceset="MCP23S17-E_ML" device="" package3d_urn="urn:adsk.eagle:package:27859776/3" value="MCP23S17-E"/>
@@ -792,7 +792,7 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R11" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_R-US_" device="R0402-HS" package3d_urn="urn:adsk.eagle:package:8961860/5" value="10KΩ"/>
 <part name="GND4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="J3" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="" package3d_urn="urn:adsk.eagle:package:27646017/2"/>
+<part name="J3" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="-RB" package3d_urn="urn:adsk.eagle:package:41620115/5" value="PCB-INTERCONNECT-RB"/>
 <part name="+3V3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="SW15" library="Switches" library_urn="urn:adsk.eagle:library:27605402" deviceset="TS-1109S-B-B" device="" package3d_urn="urn:adsk.eagle:package:27622630/2"/>

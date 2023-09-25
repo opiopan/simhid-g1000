@@ -30,7 +30,7 @@ Component ID| Product Number        | Remarks
 U1, U2, U3, U5 | [MCP23S18-E/MJ](https://www.microchip.com/en-us/product/MCP23S18)
 U4         | [STM32F411CCU](https://www.st.com/en/microcontrollers-microprocessors/stm32f411cc.html)
 U6         | [MCP1703AT-3302E/CB](https://www.digikey.com/en/products/detail/microchip-technology/MCP1703AT-3302E-CB/3131472)
-J6         | [ZX62-B-5PA(33)](https://www.hirose.com/product/p/CL0242-0033-8-33)
+J5         | [ZX62-B-5PA(33)](https://www.hirose.com/product/p/CL0242-0033-8-33)
 J6         | [MOLEX 53047-0410](https://www.molex.com/molex/products/part-detail/pcb_headers/0530470410)| **OPTIONAL**, Necessary only if debugger will be connected
 SW1, SW27  | [SLLB510100](https://tech.alpsalpine.com/prod/e/html/multicontrol/switch/sllb5/sllb510100.html)
 EC1, EC3, EC5 | [EC12D1524403](https://tech.alpsalpine.com/prod/e/html/encoder/incremental/ec12e/ec12d1524403.html)

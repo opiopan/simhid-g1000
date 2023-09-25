@@ -6,15 +6,15 @@ import jlcpcb
 
 exts = ['GTL', 'GTO', 'GTP', 'GTS', 'GBL', 'GBO', 'GBP', 'GBS', 'TXT']
 additional_parts_right = [
-    jlcpcb.Component('EC8', (15.0, 78.401), 0.0, jlcpcb.TOP),
+    jlcpcb.Component('EC8', (18.0, 78.401), 0.0, jlcpcb.TOP),
 ]
 boards=[
     ('../individuals/CAMOutputs/simhid-g1000_left.', 0, 0, 0),
-    ('../individuals/CAMOutputs/simhid-g1000_right.', 57.05, 0, 0, additional_parts_right),
-    ('../individuals/CAMOutputs/simhid-g1000_bottom.', 40.05, 224, -90),
+    ('../individuals/CAMOutputs/simhid-g1000_right.', 274.584, 0, 0, additional_parts_right),
+    ('../individuals/CAMOutputs/simhid-g1000_bottom.', 35.05, 0, 0),
 ]
 outline = 'outline.dxf'
-mousebites = 'mousebites.dxf'
+mousebites = None
 outputs = 'outputs/simhid-g1000'
 cpl = 'outputs/CPL.csv'
 

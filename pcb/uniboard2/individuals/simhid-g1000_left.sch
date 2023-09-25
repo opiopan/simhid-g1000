@@ -319,7 +319,7 @@
 </library>
 <library name="RotaryEncoder" urn="urn:adsk.eagle:library:27599378">
 <packages>
-<package name="EC12D1524403" urn="urn:adsk.eagle:footprint:27604776/3" library_version="10">
+<package name="EC12D1524403" urn="urn:adsk.eagle:footprint:27604776/3" library_version="9">
 <wire x1="4.6" y1="-1.075" x2="4.6" y2="1.075" width="0" layer="20"/>
 <wire x1="4.6" y1="1.075" x2="6.65" y2="1.075" width="0" layer="20"/>
 <wire x1="6.65" y1="1.075" x2="6.65" y2="-1.075" width="0" layer="20"/>
@@ -384,7 +384,7 @@
 </package>
 </packages>
 <packages3d>
-<package3d name="EC12D1524403" urn="urn:adsk.eagle:package:27604778/5" type="model" library_version="10">
+<package3d name="EC12D1524403" urn="urn:adsk.eagle:package:27604778/5" type="model" library_version="9">
 <packageinstances>
 <packageinstance name="EC12D1524403"/>
 </packageinstances>
@@ -429,7 +429,7 @@
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="EC12D1524403" urn="urn:adsk.eagle:component:27604779/6" prefix="EC" library_version="10">
+<deviceset name="EC12D1524403" urn="urn:adsk.eagle:component:27604779/6" prefix="EC" library_version="9">
 <gates>
 <gate name="G$1" symbol="1AXIS_1BUTTON" x="0" y="0"/>
 </gates>
@@ -1123,7 +1123,7 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </class>
 </classes>
 <parts>
-<part name="J1" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="" package3d_urn="urn:adsk.eagle:package:27646017/2"/>
+<part name="J1" library="SimHID-G1000" library_urn="urn:adsk.eagle:library:27646014" deviceset="PCB-INTERCONNECT" device="-LB" package3d_urn="urn:adsk.eagle:package:41622066/4" value="PCB-INTERCONNECT-LB"/>
 <part name="+3V2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+3V3" device=""/>
 <part name="GND3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="U1" library="MCP23S17-E_ML" library_urn="urn:adsk.eagle:library:27859769" deviceset="MCP23S17-E_ML" device="" package3d_urn="urn:adsk.eagle:package:27859776/3" value="MCP23S17-E"/>
