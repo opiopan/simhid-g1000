@@ -155,6 +155,8 @@
 <hole x="20.05" y="99.9446" drill="2.3"/>
 <hole x="8.05" y="3" drill="2.3"/>
 <hole x="32.05" y="3" drill="2.3"/>
+<hole x="12.573" y="2.667" drill="1.152"/>
+<hole x="12.065" y="189.103" drill="1.152"/>
 </plain>
 <libraries>
 <library name="RotaryEncoder" urn="urn:adsk.eagle:library:27599378">

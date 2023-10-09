@@ -14,6 +14,7 @@ boards=[
     ('../individuals/CAMOutputs/simhid-g1000_bottom.', 40.05, 224, -90),
 ]
 outline = 'outline.dxf'
+holes = 'holes.dxf'
 mousebites = 'mousebites.dxf'
 outputs = 'outputs/simhid-g1000'
 cpl = 'outputs/CPL.csv'
@@ -82,16 +83,27 @@ ctx.dump(cpl)
 print(' end', flush=True)
     
 print('generating GML: ', end='', flush=True)
+ctx = GerberComposition()
 file = gerberex.read(outline)
-file.write(outputs + '.GML')
+file.to_metric()
+ctx.merge(file)
+file = gerberex.read(holes)
+file.to_metric()
+ctx.merge(file)
+ctx.dump(outputs + '.GML')
 print('.', end='', flush=True)
 ctx = GerberComposition()
 base = gerberex.rectangle(width=320, height=320, left=0, bottom=0, units='metric')
 base.draw_mode = DxfFile.DM_FILL
 ctx.merge(base)
+file = gerberex.read(outline)
 file.to_metric()
 file.draw_mode = DxfFile.DM_FILL
 file.negate_polarity()
+ctx.merge(file)
+file = gerberex.read(holes)
+file.to_metric()
+file.draw_mode = DxfFile.DM_FILL
 ctx.merge(file)
 ctx.dump(outputs + '-fill.GML')
 
