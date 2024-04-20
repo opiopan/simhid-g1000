@@ -30,7 +30,7 @@ Place the all buttons in the correct position and orientation from the back side
 </p>
 
 ## 4. Attach PCBs to the front housing
-Fasten three PCBs to the front housing with two types of M2 screws, one type is **M2 4mm pan head screw**, the other one type is **M2 hex male-female spacer with 4mm male part and 10mm spacer part**.<br>
+Fasten three PCBs to the front housing with two types of M2 screws, one type is **M2 4mm pan head screw**, the other one type is **M2 hex male-female spacer with 4mm male part and 8mm spacer part**.<br>
 The following image shows places for each screws that yellow for pan head screws and red for spacers.
 
 <p align="center">
