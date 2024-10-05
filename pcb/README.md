@@ -39,6 +39,10 @@ PCB Thickness| 1.0 mm
 Tooling holes| Added by Customer
 PCBA Type /<br>Assembly Side|My recommendation is ***'Economic'*** for the ***'PCBA Type'*** and ***'Top Side'*** for the ***'Assembly Side'***.<br><br>When assembling components on both sides of the board, you must select ***'Standard'*** for the ***'PCBA Type'***. This results in a significant cost increase. For example, if you manufacture two units of Variant 2, selecting ***'Economic'*** and ***'Top Side'*** costs $188.07, whereas selecting ***'Standard'*** and ***'Both Side'*** increases the price to $270.25. That’s quite a large amount to pay for soldering just two Micro USB connectors, each costing only $0.34, isn’t it?<br><br>If you use the PCBA service to assemble only the top side of Variant 1, you’ll need to manually solder the [MCP1703AT-3302E/CB](https://www.digikey.com/en/products/detail/microchip-technology/MCP1703AT-3302E-CB/3131472) and [ZX62-B-5PA(33)](https://www.hirose.com/product/p/CL0242-0033-8-33) on the bottom side yourself. For Variant 2, you only need to solder the [ZX62-B-5PA(33)](https://www.hirose.com/product/p/CL0242-0033-8-33).
 
+<p align="center">
+<img alt="PCBA service" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/pcba.png" width=750>
+</p>
+
 ## Schematic Diagram
 
 <p align="center">
