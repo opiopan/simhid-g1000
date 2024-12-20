@@ -3,7 +3,7 @@ PCBs for SimHID G1000
 
 NOTE: |
 :----|
-SimHID G1000 was designed to apply five **ALPS EC11EBB24C03** as the dual shaft rotary encoder, however this product is discontinued now.<br>Fortunately, [**BOURNS PEC11D-4120F-20015**](https://www.bourns.com/products/encoders/contacting-encoders/product/PEC11D) can be installed instead of **EC11EBB24C03**. This is fully compatible with ALPS product except shaft geometry.<br>If you install BOURNS PEC11D-4120F-20015, print [another design for dual shaft knobs](https://www.thingiverse.com/thing:5804384).
+SimHID G1000 was designed to apply five **ALPS EC11EBB24C03** as the dual shaft rotary encoder, however this product is discontinued now.<br>Fortunately, [**BOURNS PEC11D-4120F-S0015**](https://www.bourns.com/products/encoders/contacting-encoders/product/PEC11D) can be installed instead of **EC11EBB24C03**. This is fully compatible with ALPS product except shaft geometry.<br>If you install BOURNS PEC11D-4120F-S0015, print [another design for dual shaft knobs](https://www.thingiverse.com/thing:5804384).
 
 <p align="center">
 <img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/pcb.jpg" width=750>
@@ -73,7 +73,7 @@ R3, R4, R5, R6, R7, R8, R9, R10     | 10k ohm x 4 (0603 x 4) |
 SW1, SW27  | SLLB510100           |
 SW2, SW3, SW4, SW5, SW6, SW7, SW8, <br>SW9, SW10, SW11, SW12, SW13, SW14,<br> SW15, SW16, SW17, SW18, SW19, SW20,<br> SW21, SW22, SW23, SW24, SW25, SW26,<br> SW28, SW29, SW30, SW31, SW32, SW33, SW34 | 4.5mm x 4.5mm tact switch | 4.3mm height
 EC1, EC3, EC5 | EC12D1524403 | 1 axis rotary encoder with push button
-EC2, EC4, EC6, EC7, EC9 | EC11EBB24C03 or PEC11D-4120F-20015 | 2 axes rotary encoder with push button
+EC2, EC4, EC6, EC7, EC9 | EC11EBB24C03 or PEC11D-4120F-S0015 | 2 axes rotary encoder with push button
 EC8 | RKJXT1F42001 | 4 directional joystick with 1 axis rotary encoder and push button
 
 ## Supplement
