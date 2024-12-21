@@ -2,7 +2,7 @@ How to assemble SimHID G1000
 ===
 Refer to followings and prepare all parts that make up SimHID G1000 in advance.
 
-- [3D printed parts and laser cutted acrylic plate](https://www.thingiverse.com/thing:4966493)
+- [3D printed parts and laser cut acrylic plate](https://www.thingiverse.com/thing:4966493)
 - [PCB](../pcb)
 
 ## 1. Assemble front housing
