@@ -226,7 +226,7 @@ src/version.c:
 
 update_version: $(BUILD_DIR)
 	@OLD=`if [ -f build/.version ];then cat build/.version;fi`;\
-	NEW=`tools/version`;\
+	NEW=`tools/version` || exit 1;\
 	if ! [ "$$NEW" = "$$OLD" ];then\
 	    (\
 	        echo 'const char version_string[] = "'"$$NEW"'";';\
