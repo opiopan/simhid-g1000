@@ -28,7 +28,12 @@ The model data for 3D printer and laser cutter are published at [Thingiverse](ht
 In this Github repository, PCB design and firmware source codes are hosted.<br>
 Regarding PCB design related information include manufacturing, please refer README at [here](pcb).<br>
 
-Once alll parts of SimHID G1000 are prepared, please assemble those according to [this procedure](docs/how-to-assemble.md).
+Once all parts of SimHID G1000 are prepared, please assemble those according to [this procedure](docs/how-to-assemble.md).
+
+**Note**: |
+:----|
+SimHID G1000 is entirely designed using [Fusion 360](https://www.autodesk.com/products/fusion-360/overview), including both mechanical and electrical components. If you want to modify the parts design, download [this Fusion 360 design file](https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/data/SimHID-G1000.f3d) and upload it to your Fusion 360 workspace.<br>Note that this file includes the 3D model of the PCB but does not contain the original netlist or artwork. The PCB design files are published separately [here](pcb), so upload them to Fusion 360 as well.
+
 
 ## Compatible iPad
 <img alt="board image" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/ipad.jpg" width=400 align="right">
@@ -86,7 +91,8 @@ The other one is programming it via USB port in DFU mode. You can switch SimHID 
 
 ### Programming via Debugger
 1. **Preparing Debugger**<br>
-    Make sure that a debugger is connected with swd port and debugger controlling software which behave as GDB server such as OpenOCD is running.
+    Make sure that a debugger is connected with swd port (J6) and debugger controlling software which behave as GDB server such as OpenOCD is running.<br>
+    Note that the J6 port does not have a power terminal, so you need to connect a USB port to supply power.
 
 2. **Programming**<br>
     You can program a firmware by making ```flash``` target with ```DEBUGSERVER``` parameter.
