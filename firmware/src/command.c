@@ -267,15 +267,26 @@ static CMDOPS cmd_err = {
 --------------------------------------------------------*/
 typedef struct{
     int line;
+    int maxline;
     int swg_num;
 }IDCTX;
 
 static void id_init(void *ctx, CommandParserCtx *cmd)
 {
     IDCTX* rctx = (IDCTX*)ctx;
-    rctx->line = 0;
     SCANNER_CTX *scanner = app_getScannerCtx();
     rctx->swg_num = scanner_getswgnum(scanner);
+    if (cmd->paramnum > 0 && (strcmp(cmd->params[0].strvalue, "b") == 0 || strcmp(cmd->params[0].strvalue, "B") == 0)){
+        rctx->line = 4;
+        rctx->maxline = 6 + rctx->swg_num;
+    }else{
+        rctx->line = 0;
+#ifdef ENABLE_RICH_IDENTIFIER
+        rctx->maxline == 6 + rctx->swg_num;
+#else
+        rctx->maxline = 4;
+#endif
+    }
 }
 
 static int id_schedule(void *ctx, char *respbuf, int len)
@@ -298,7 +309,7 @@ static int id_schedule(void *ctx, char *respbuf, int len)
         const char* status = swg->is_valid ? "OK" : "Failure";
         return snprintf(respbuf, len, " [%s = %s]", swg->name, status);
     }else if (rctx->line == 6 + rctx->swg_num){
-        return snprintf(respbuf, len, "\r\nI\r\n");
+        return snprintf(respbuf, len, "\r\n");
     }
 
     return 0;
@@ -307,11 +318,7 @@ static int id_schedule(void *ctx, char *respbuf, int len)
 static BOOL id_isfinished(void *ctx)
 {
     IDCTX *rctx = (IDCTX *)ctx;
-#ifdef ENABLE_RICH_IDENTIFIER
-    return rctx->line >= 6 + rctx->swg_num;
-#else
-    return rctx->line >= 4;
-#endif
+    return rctx->line >= rctx->maxline;
 }
 
 static CMDOPS cmd_id = {
