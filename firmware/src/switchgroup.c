@@ -28,6 +28,11 @@ static BOOL extswg_init(VSWG_CTX *ctx)
     }
 
     rctx->common.is_valid = mcp23s18_init(&rctx->exp, extswg_spi, rctx->cs_port, rctx->cs_pin, mask);
+    if (!rctx->common.is_valid){
+        OLOG_LOGI("switchgroup: MCP23S18 initialization failed for %s, now retrying", rctx->common.name);
+        HAL_Delay(300);
+        rctx->common.is_valid = mcp23s18_init(&rctx->exp, extswg_spi, rctx->cs_port, rctx->cs_pin, mask);
+    }
     if (rctx->common.is_valid){
         OLOG_LOGI("switchgroup: MCP23S13 has been initialized for %s", rctx->common.name);
     }else{
