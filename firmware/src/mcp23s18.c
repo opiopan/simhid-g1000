@@ -30,7 +30,7 @@ BOOL mcp23s18_init(MCP23S18_CTX *ctx, SPI_HandleTypeDef *spi,
 
     BOOL failed = FALSE;
 
-    int conf = MCP23S18_CONF_SEQOP;
+    int conf = 0;
     failed |= !mcp23s18_send8bits(ctx, MCP23S18_REG_IOCON, conf);
     int check;
     failed |= !mcp23s18_recv8bits(ctx, MCP23S18_REG_IOCON, &check);
