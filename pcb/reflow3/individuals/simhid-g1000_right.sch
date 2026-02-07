@@ -1889,7 +1889,7 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <description>&lt;USB Connectors USB-C Rec 3u" Vert 16P SMT 2.3mm TH stakes H7.46mm T+R+Cap&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
 <packages>
-<package name="USB4145030230C-HS" urn="urn:adsk.eagle:footprint:46113759/1" library_version="4">
+<package name="USB4145030230C-HS" urn="urn:adsk.eagle:footprint:46113759/3" library_version="7">
 <description>&lt;b&gt;USB4145-03-0230-C-2&lt;/b&gt;&lt;br&gt;</description>
 <smd name="A1" x="-2.75" y="1.685" dx="1.55" dy="0.3" layer="1" rot="R90"/>
 <smd name="A4" x="-1.25" y="1.685" dx="1.55" dy="0.3" layer="1" rot="R90"/>
@@ -1912,9 +1912,6 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <pad name="MH3" x="-4" y="-1.43" drill="1.1" diameter="1.875"/>
 <pad name="MH4" x="4" y="-1.43" drill="1.1" diameter="1.875"/>
 <hole x="-4" y="0" drill="0.71"/>
-<hole x="4" y="0" drill="0.71"/>
-<hole x="4.15" y="0" drill="0.71"/>
-<hole x="3.85" y="0" drill="0.71"/>
 <text x="0" y="3.302" size="1.016" layer="25" font="vector" align="center">&gt;NAME</text>
 <wire x1="-4.47" y1="1.58" x2="4.47" y2="1.58" width="0.1" layer="51"/>
 <wire x1="4.47" y1="1.58" x2="4.47" y2="-1.58" width="0.1" layer="51"/>
@@ -1924,8 +1921,12 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <wire x1="5.938" y1="3.367" x2="5.938" y2="-3.367" width="0.1" layer="51"/>
 <wire x1="5.938" y1="-3.367" x2="-5.938" y2="-3.367" width="0.1" layer="51"/>
 <wire x1="-5.938" y1="-3.367" x2="-5.938" y2="3.367" width="0.1" layer="51"/>
+<wire x1="4.15" y1="0.355" x2="3.85" y2="0.355" width="0" layer="20"/>
+<wire x1="4.15" y1="-0.3555" x2="3.85" y2="-0.355" width="0" layer="20"/>
+<wire x1="3.85" y1="0.355" x2="3.85" y2="-0.355" width="0" layer="20" curve="180"/>
+<wire x1="4.15" y1="0.355" x2="4.15" y2="-0.3555" width="0" layer="20" curve="-180"/>
 </package>
-<package name="USB4145030230C" urn="urn:adsk.eagle:footprint:46113760/1" library_version="4">
+<package name="USB4145030230C" urn="urn:adsk.eagle:footprint:46113760/2" library_version="6">
 <description>&lt;b&gt;USB4145-03-0230-C-2&lt;/b&gt;&lt;br&gt;</description>
 <smd name="A1" x="-2.75" y="1.485" dx="1.15" dy="0.3" layer="1" rot="R90"/>
 <smd name="A4" x="-1.25" y="1.485" dx="1.15" dy="0.3" layer="1" rot="R90"/>
@@ -1949,8 +1950,6 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 <pad name="MH4" x="4" y="-1.43" drill="1.1" diameter="1.875"/>
 <hole x="-4" y="0" drill="0.71"/>
 <hole x="4" y="0" drill="0.71"/>
-<hole x="4.15" y="0" drill="0.71"/>
-<hole x="3.85" y="0" drill="0.71"/>
 <text x="0" y="3.175" size="1.016" layer="25" font="vector" align="center">&gt;NAME</text>
 <wire x1="-4.47" y1="1.58" x2="4.47" y2="1.58" width="0.1" layer="51"/>
 <wire x1="4.47" y1="1.58" x2="4.47" y2="-1.58" width="0.1" layer="51"/>
@@ -1963,13 +1962,13 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </package>
 </packages>
 <packages3d>
-<package3d name="USB4145030230C-HS" urn="urn:adsk.eagle:package:46113762/2" type="model" library_version="4">
+<package3d name="USB4145030230C-HS" urn="urn:adsk.eagle:package:46113762/5" type="model" library_version="7">
 <description>&lt;b&gt;USB4145-03-0230-C-2&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="USB4145030230C-HS"/>
 </packageinstances>
 </package3d>
-<package3d name="USB4145030230C" urn="urn:adsk.eagle:package:46113763/2" type="model" library_version="4">
+<package3d name="USB4145030230C" urn="urn:adsk.eagle:package:46113763/4" type="model" library_version="6">
 <description>&lt;b&gt;USB4145-03-0230-C-2&lt;/b&gt;&lt;br&gt;</description>
 <packageinstances>
 <packageinstance name="USB4145030230C"/>
@@ -2007,7 +2006,7 @@ Source: &lt;a href="http://docs-emea.rs-online.com/webdocs/1169/0900766b811692f9
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="USB4145-03-0230-C" urn="urn:adsk.eagle:component:46113764/2" prefix="J" library_version="4">
+<deviceset name="USB4145-03-0230-C" urn="urn:adsk.eagle:component:46113764/5" prefix="J" library_version="7">
 <description>&lt;b&gt;USB Connectors USB-C Rec 3u" Vert 16P SMT 2.3mm TH stakes H7.46mm T+R+Cap&lt;/b&gt;&lt;p&gt;
 Source: &lt;a href="https://gct.co/newark/connector/USB4145"&gt; Datasheet &lt;/a&gt;</description>
 <gates>
@@ -2038,7 +2037,7 @@ Source: &lt;a href="https://gct.co/newark/connector/USB4145"&gt; Datasheet &lt;/
 <connect gate="G$1" pin="VBUS_4" pad="B9"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:46113763/2"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:46113763/4"/>
 </package3dinstances>
 <technologies>
 <technology name="">
@@ -2077,7 +2076,7 @@ Source: &lt;a href="https://gct.co/newark/connector/USB4145"&gt; Datasheet &lt;/
 <connect gate="G$1" pin="VBUS_4" pad="B9"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:46113762/2"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:46113762/5"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -2206,7 +2205,7 @@ Source: &lt;a href="https://gct.co/newark/connector/USB4145"&gt; Datasheet &lt;/
 <part name="C15" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="100nF"/>
 <part name="C16" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="4.7uF"/>
 <part name="C20" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_C-EU" device="C0402-HS" package3d_urn="urn:adsk.eagle:package:8961862/3" value="100nF"/>
-<part name="J5" library="typec_connectors" library_urn="urn:adsk.eagle:library:39290719" deviceset="USB4145-03-0230-C" device="HS" package3d_urn="urn:adsk.eagle:package:46113762/2"/>
+<part name="J5" library="typec_connectors" library_urn="urn:adsk.eagle:library:39290719" deviceset="USB4145-03-0230-C" device="HS" package3d_urn="urn:adsk.eagle:package:46113762/5"/>
 <part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R60" library="gen-discrete3" library_urn="urn:adsk.eagle:library:8961849" deviceset="RCL_R-US_" device="R0402-HS" package3d_urn="urn:adsk.eagle:package:8961860/5" value="5.1k"/>
 <part name="GND24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
