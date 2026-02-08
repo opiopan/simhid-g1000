@@ -2,7 +2,7 @@ PCBs for SimHID G1000
 ===
 
 > [!NOTE]
-> SimHID G1000 was originally designed to use five [**ALPS EC11EBB24C03*+](https://tech.alpsalpine.com/e/products/detail/EC11EBB24C03/) dual-shaft rotary encoders.
+> SimHID G1000 was originally designed to use five [**ALPS EC11EBB24C03**](https://tech.alpsalpine.com/e/products/detail/EC11EBB24C03/) dual-shaft rotary encoders.
 > This part was once discontinued (EOL) around 2022, but production and sales were resumed in 2025.<br/>
 > As of now, **EC11EBB24C03** is marked as “**Not Recommended for New Designs**”, which means it is currently produced only to support existing designs, and its long-term availability is uncertain.
 >
