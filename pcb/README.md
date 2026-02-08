@@ -1,9 +1,14 @@
 PCBs for SimHID G1000
 ===
 
-NOTE: |
-:----|
-SimHID G1000 was designed to apply five **ALPS EC11EBB24C03** as the dual shaft rotary encoder, however this product is discontinued now.<br>Fortunately, [**BOURNS PEC11D-4120F-S0015**](https://www.bourns.com/products/encoders/contacting-encoders/product/PEC11D) can be installed instead of **EC11EBB24C03**. This is fully compatible with ALPS product except shaft geometry.<br>If you install BOURNS PEC11D-4120F-S0015, print [another design for dual shaft knobs](https://www.thingiverse.com/thing:5804384).
+> [!NOTE]
+> SimHID G1000 was originally designed to use five [**ALPS EC11EBB24C03*+](https://tech.alpsalpine.com/e/products/detail/EC11EBB24C03/) dual-shaft rotary encoders.
+> This part was once discontinued (EOL) around 2022, but production and sales were resumed in 2025.<br/>
+> As of now, **EC11EBB24C03** is marked as “**Not Recommended for New Designs**”, which means it is currently produced only to support existing designs, and its long-term availability is uncertain.
+>
+> For this reason, SimHID G1000 also supports [**BOURNS PEC11D-4120F-S0015**](https://www.bourns.com/products/encoders/contacting-encoders/product/PEC11D) as an alternative. This encoder is electrically and functionally compatible with the ALPS part, with the main difference being the shaft geometry.<br/>
+> If you choose to use PEC11D-4120F-S0015, please use [the alternative dual-shaft knob design provided here](https://www.thingiverse.com/thing:5804384).
+
 
 <p align="center">
 <img alt="description" src="https://raw.githubusercontent.com/wiki/opiopan/simhid-g1000/images/pcb.jpg" width=750>

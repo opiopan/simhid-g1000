@@ -26,7 +26,7 @@ Most parts are 3D printed by FDM, but some parts are cut out and engraved from a
 The model data for 3D printer and laser cutter are published at [Thingiverse](https://www.thingiverse.com/thing:4966493). Regarding these models, please refer [here](https://www.thingiverse.com/thing:4966493).
 
 In this Github repository, PCB design and firmware source codes are hosted.<br>
-Regarding PCB design related information include manufacturing, please refer README at [here](pcb).<br>
+Regarding PCB design related information include manufacturing, please refer README at [here](pcb/).<br>
 
 Once all parts of SimHID G1000 are prepared, please assemble those according to [this procedure](docs/how-to-assemble.md).
 
