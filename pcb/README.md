@@ -27,7 +27,7 @@ Now that the supply-demand situation for chips has improved, I decided to design
 In the second variant, designed in September 2023, I replaced the MCP23S18-E/MJ with the [MCP23S17-E/ML](https://www.microchip.com/en-us/product/MCP23S17) (QFN28) and reduced the components mounted on the back of the PCB to only the Micro USB connector.
 
 > [!NOTE]
-> In 2025, two additional PCB variants were designed primarily to improve the visual appearance of the device.  
+> In late 2024, two additional PCB variants were designed primarily to improve the visual appearance of the device.  
 > In the original design, the Micro USB connector is located on the right side of the PCB. Since the device must remain connected to a PC while in use, the USB cable is always visible, which the author personally found distracting.   
 >
 > The two new variants relocate the USB connector to the rear side of the PCB, allowing the cable to be routed out of sight.
