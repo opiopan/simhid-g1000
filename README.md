@@ -45,12 +45,12 @@ An iPad can be easily inserted from the top of the SimHID G1000 along the guide 
 I've confirmed to fit with SimHID G1000 only in case of iPad Air gen 3, 
 but I believe that all iPad families with display from 10.2 inches to 11 inches can be fit.
 
-The iPad list compatible with SimHID G1000 is below (as of Feb. 2026).
+The iPad list compatible with SimHID G1000 is below (as of Mar. 2026).
 
 |Class | Model
 |:----------:|------------------------------------|
 |iPad Pro   | iPad Pro 10.5″<br>iPad Pro 11″ Gen 1<br>iPad Pro 11″ Gen 2<br>iPad Pro 11″ Gen 3<br>iPad Pro 11″ M4<br>iPad Pro 11″ M5
-|iPad Air   | iPad Air Gen 3<br>iPad Air Gen 4<br>iPad Air Gen 5<br>iPad Air 11″ M2<br>iPad Air 11″ M3
+|iPad Air   | iPad Air Gen 3<br>iPad Air Gen 4<br>iPad Air Gen 5<br>iPad Air 11″ M2<br>iPad Air 11″ M3<br>iPad Air 11″ M4
 |iPad       | iPad Gen 7<br>iPad Gen 8<br>iPad Gen 9<br>iPad Gen 10<br>iPad A16
 
 
