@@ -28,3 +28,4 @@ outputs
 outputs2
 outputs-tiny
 firmware/src/version.c
+.DS_Store
